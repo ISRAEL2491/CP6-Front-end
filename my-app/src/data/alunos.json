@@ -1,0 +1,67 @@
+[
+    {
+      "id": 558575,
+      "nome": "Maria Brigidio",
+      "idade": 20,
+      "foto": "/assets/maria-foto.png",
+      "descricao": "Uma estudante comprometida e entusiasmada, com um olhar crítico apurado para os detalhes do design e habilidades sólidas em lógica. Entusiasmada para contribuir em novos projetos, trazendo inovação e criatividade para cada desafio que enfrenta.",
+      "hardSkills": ["JavaScript", "React", "Java", "Python", "HTML", "CSS", "JavaScript", "React", "MySQL", "Git/GitHub"],
+      "softSkills": ["Trabalho em equipe", "Resiliência", "Comunicação"],
+      "materias": [
+        {
+          "nome": "Artificial Intelligence & Chatbot",
+          "checkpoints": [
+            { "data": "2024-01-10", "nota": 9.0, "feedback": "Ótimo trabalho!" },
+            { "data": "2024-02-15", "nota": 8.5, "feedback": "Melhoria significativa." },
+            { "data": "2024-03-10", "nota": 9.2, "feedback": "Excelente resultado." },
+            { "data": "2024-04-20", "nota": 8.8, "feedback": "Bom desempenho." }
+          ],
+          "challenges": [
+            { "nota": 8.0, "descricao": "Desafio 1: Implementar chatbot simples" },
+            { "nota": 8.5, "descricao": "Desafio 2: Adicionar funcionalidades avançadas" },
+            { "nota": 9.0, "descricao": "Desafio 3: Otimizar o desempenho" },
+            { "nota": 9.3, "descricao": "Desafio 4: Integração com IA" }
+          ],
+          "globalSolutions": [
+            { "link": "/global-solutions/ia-chatbot-1", "nota": 9.5, "descricao": "Primeira solução global." },
+            { "link": "/global-solutions/ia-chatbot-2", "nota": 9.0, "descricao": "Segunda solução global." },
+            { "link": "/global-solutions/ia-chatbot-3", "nota": 8.8, "descricao": "Terceira solução global." }
+          ]
+        }
+      ]
+    }
+  ]
+  [
+    {
+      "id": 558575,
+      "nome": "Israel",
+      "idade": 20,
+      "foto": "/assets/israel.png",
+      "descricao": "Uma estudante comprometida e entusiasmada, com um olhar crítico apurado para os detalhes do design e habilidades sólidas em lógica. Entusiasmada para contribuir em novos projetos, trazendo inovação e criatividade para cada desafio que enfrenta.",
+      "hardSkills": ["JavaScript", "React", "Java", "Python", "HTML", "CSS", "JavaScript", "React", "MySQL", "Git/GitHub"],
+      "softSkills": ["Trabalho em equipe", "Resiliência", "Comunicação"],
+      "materias": [
+        {
+          "nome": "Artificial Intelligence & Chatbot",
+          "checkpoints": [
+            { "data": "2024-01-10", "nota": 9.0, "feedback": "Ótimo trabalho!" },
+            { "data": "2024-02-15", "nota": 8.5, "feedback": "Melhoria significativa." },
+            { "data": "2024-03-10", "nota": 9.2, "feedback": "Excelente resultado." },
+            { "data": "2024-04-20", "nota": 8.8, "feedback": "Bom desempenho." }
+          ],
+          "challenges": [
+            { "nota": 8.0, "descricao": "Desafio 1: Implementar chatbot simples" },
+            { "nota": 8.5, "descricao": "Desafio 2: Adicionar funcionalidades avançadas" },
+            { "nota": 9.0, "descricao": "Desafio 3: Otimizar o desempenho" },
+            { "nota": 9.3, "descricao": "Desafio 4: Integração com IA" }
+          ],
+          "globalSolutions": [
+            { "link": "/global-solutions/ia-chatbot-1", "nota": 9.5, "descricao": "Primeira solução global." },
+            { "link": "/global-solutions/ia-chatbot-2", "nota": 9.0, "descricao": "Segunda solução global." },
+            { "link": "/global-solutions/ia-chatbot-3", "nota": 8.8, "descricao": "Terceira solução global." }
+          ]
+        }
+      ]
+    }
+  ]
+  
