@@ -6,14 +6,21 @@ export type TipoAluno = {
     descricao: string;
     hardSkills: string[];
     softSkills: string[];
+    materias: Materias[];
+}
+
+export type Materias = {
+    nome: string;
     checkpoints: Checkpoint[];
     challenges: Challenge[];
     globalSolutions: GlobalSolution[];
 }
 
 export type Checkpoint = {
+    data: string;
     descricao: string;
     nota: number;
+    feedback: string;
 }
 
 export type Challenge = {
