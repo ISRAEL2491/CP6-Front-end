@@ -3,5 +3,5 @@ import { Client } from 'appwrite';
 export const client = new Client();
 
 client
-  .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT as string) // Appwrite API endpoint
-  .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID as string); // Project ID
+  .setEndpoint('https://cloud.appwrite.io/v1') // Appwrite API endpoint
+  .setProject('6717e4660038656dc9a3'); // Project ID

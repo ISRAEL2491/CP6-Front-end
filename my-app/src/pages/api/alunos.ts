@@ -148,6 +148,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     }
   } else if (req.method === 'POST') {
     const novoAluno = req.body;
+    if (!novoAluno.nome || !novoAluno.idade) {
+      return res.status(400).json({ message: "Campos obrigatórios não preenchidos." });
+    }
     novoAluno.id = Date.now(); // Gera um ID único
     alunos.push(novoAluno);
     res.status(201).json(novoAluno);

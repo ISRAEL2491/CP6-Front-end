@@ -9,8 +9,8 @@ const database = new Databases(client);
 export async function getProdutos() {
   try {
     const response = await database.listDocuments(
-      process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID as string,
-      process.env.NEXT_PUBLIC_APPWRITE_COLLECTIONS_ID as string,
+      process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID || "671934f600149818b5b9", // Database ID
+      process.env.NEXT_PUBLIC_APPWRITE_COLLECTIONS_ID || "671935e9000988359273", // Collection ID
       [Query.orderAsc("$createdAt")]
     );
     return response.documents;
@@ -32,8 +32,8 @@ export async function GET() {
 export async function criarProduto(produto: TipoAluno) {
   try {
     const response = await database.createDocument(
-      process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID as string,
-      process.env.NEXT_PUBLIC_APPWRITE_COLLECTIONS_ID as string,
+      process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID || "671934f600149818b5b9", // Database ID
+      process.env.NEXT_PUBLIC_APPWRITE_COLLECTIONS_ID || "671935e9000988359273", // Collection ID
       ID.unique(),
       produto
     );

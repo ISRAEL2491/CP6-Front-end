@@ -47,7 +47,7 @@ export default function Cabecalho() {
         <Overlay onClick={closeModal}>
           <ModalContent onClick={(e) => e.stopPropagation()}>
             <CloseButton onClick={() => setModal2Open(false)}>X</CloseButton>
-            <h2>Challenge</h2>
+            <h2 className="p2">Challenge</h2>
             <p>Avaliações em formato de desafios, com foco em resolução de problemas com entregas programadas</p>
           </ModalContent>
         </Overlay>
@@ -80,11 +80,13 @@ const Overlay = styled.div`
 `;
 
 const ModalContent = styled.div`
-  background-color: white;
+  background-color:  #0e0e0e;
+  color: white;
   padding: 20px;
   border-radius: 8px;
   max-width: 500px;
   width: 100%;
+  height: 10em;
   position: relative;
 `;
 
