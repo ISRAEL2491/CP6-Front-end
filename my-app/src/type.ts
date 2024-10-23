@@ -10,6 +10,7 @@ export type TipoAluno = {
 }
 
 export type Materias = {
+    id: number;
     nome: string;
     checkpoints: Checkpoint[];
     challenges: Challenge[];
@@ -17,18 +18,20 @@ export type Materias = {
 }
 
 export type Checkpoint = {
+    id: number;
     data: string;
-    descricao: string;
     nota: number;
-    feedback: string;
+    feedback: string; 
 }
 
 export type Challenge = {
+    id: number;
     descricao: string;
     nota: number;
 }
 
 export type GlobalSolution = {
+    id: number;
     link: string;
     descricao: string;
     nota: number;
