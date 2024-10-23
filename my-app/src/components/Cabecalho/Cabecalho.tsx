@@ -1,6 +1,8 @@
 "use client";
+import Image from 'next/image';
 import { useState } from "react";
 import styled from "styled-components";
+import Link from "next/link";  // Importando o Link para navegação
 
 export default function Cabecalho() {
   const [isModal1Open, setModal1Open] = useState(false);
@@ -15,8 +17,19 @@ export default function Cabecalho() {
 
   return (
     <header>
+      <Image
+        src={'/assets/globo.png'}  
+        alt={'logo'} 
+        width={200} 
+        height={200} 
+      />
       <h3>ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</h3>
+      
+      {/* Botão Home */}
       <nav className="info">
+        <Link href="/">
+          <HomeButton>Home</HomeButton>
+        </Link>
         <button onClick={() => setModal1Open(true)}>Checkpoint</button>
         <button onClick={() => setModal2Open(true)}>Challenge</button>
         <button onClick={() => setModal3Open(true)}>Global Solution</button>
@@ -52,6 +65,19 @@ export default function Cabecalho() {
     </header>
   );
 }
+
+const HomeButton = styled.button`
+  padding: 10px 20px;
+  background-color: #1E90FF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-right: 15px;
+  cursor: pointer;
+  &:hover {
+    background-color: #4682B4;
+  }
+`;
 
 const Overlay = styled.div`
   position: fixed;

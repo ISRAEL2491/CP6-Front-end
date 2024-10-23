@@ -1,6 +1,6 @@
 import {Client, Databases , Account } from "appwrite";
 
-const client = new Client();
+export const client = new Client();
 client
     .setEndpoint('')
     .setProject('6717e2640025c200d8d3')

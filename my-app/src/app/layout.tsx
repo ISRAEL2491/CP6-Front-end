@@ -1,5 +1,5 @@
+
 import Cabecalho from "@/components/Cabecalho/Cabecalho";
-import Menu from "@/components/Menu/Menu";
 import Rodape from "@/components/Rodape/Rodape";
 import type { Metadata } from "next";
 
@@ -15,11 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body>
-
+      <body className="bg-background text-text min-h-screen flex flex-col">
         <Cabecalho />
-        <Menu />
-        <main>{children}</main>
+        <main className="flex-grow p-8">{children}</main>
         <Rodape />
       </body>
     </html>
