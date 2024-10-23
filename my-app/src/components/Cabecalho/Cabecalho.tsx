@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import { useState } from "react";
 import styled from "styled-components";
-import Link from "next/link";  // Importando o Link para navegação
 
 export default function Cabecalho() {
   const [isModal1Open, setModal1Open] = useState(false);
@@ -26,7 +25,7 @@ export default function Cabecalho() {
         />
         <h3>ANÁLISE E DESENVOLVIMENTO<br></br>DE SISTEMAS</h3>
       </div>
-     
+
       <nav className="info">
         
         <button onClick={() => setModal1Open(true)}>Checkpoint</button>
@@ -38,7 +37,7 @@ export default function Cabecalho() {
         <Overlay onClick={closeModal}>
           <ModalContent onClick={(e) => e.stopPropagation()}>
             <CloseButton onClick={() => setModal1Open(false)}>X</CloseButton>
-            <h2>Checkpoint</h2>
+            <h2 className="mt-4 mb-4">Checkpoint</h2>
             <p>Avaliações intermediárias para acompanhamento do progresso</p>
           </ModalContent>
         </Overlay>
@@ -47,7 +46,7 @@ export default function Cabecalho() {
         <Overlay onClick={closeModal}>
           <ModalContent onClick={(e) => e.stopPropagation()}>
             <CloseButton onClick={() => setModal2Open(false)}>X</CloseButton>
-            <h2 className="p2">Challenge</h2>
+            <h2 className="mt-4 mb-4">Challenge</h2>
             <p>Avaliações em formato de desafios, com foco em resolução de problemas com entregas programadas</p>
           </ModalContent>
         </Overlay>
@@ -56,7 +55,7 @@ export default function Cabecalho() {
         <Overlay onClick={closeModal}>
           <ModalContent onClick={(e) => e.stopPropagation()}>
             <CloseButton onClick={() => setModal3Open(false)}>X</CloseButton>
-            <h2>Global Solution</h2>
+            <h2 className="mt-4 mb-4">Global Solution</h2>
             <p>Projetos ou avaliações integradoras, que envolvem a aplicação global dos conhecimentos adquiridos</p>
           </ModalContent>
         </Overlay>
@@ -72,7 +71,7 @@ const Overlay = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,7 +92,7 @@ const ModalContent = styled.div`
 const CloseButton = styled.button`
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 20px;
   background: transparent;
   border: none;
   font-size: 20px;
