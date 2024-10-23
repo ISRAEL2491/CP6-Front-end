@@ -1,4 +1,4 @@
-export type TipoAluno = {
+export interface TipoAluno {
     id: number;
     nome: string;
     idade: number;
@@ -6,33 +6,34 @@ export type TipoAluno = {
     descricao: string;
     hardSkills: string[];
     softSkills: string[];
-    materias: Materias[];
-}
-
-export type Materias = {
+    materias: Materia[];
+  }
+  
+  interface Materia {
     id: number;
     nome: string;
     checkpoints: Checkpoint[];
     challenges: Challenge[];
     globalSolutions: GlobalSolution[];
-}
-
-export type Checkpoint = {
+  }
+  
+  interface Checkpoint {
     id: number;
     data: string;
     nota: number;
-    feedback: string; 
-}
-
-export type Challenge = {
+    feedback: string;
+  }
+  
+  interface Challenge {
     id: number;
-    descricao: string;
     nota: number;
-}
-
-export type GlobalSolution = {
+    descricao: string;
+  }
+  
+  interface GlobalSolution {
     id: number;
     link: string;
-    descricao: string;
     nota: number;
-}
+    descricao: string;
+  }
+  

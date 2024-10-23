@@ -1,6 +1,7 @@
 "use client";  
 import { TipoAluno } from '@/type';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
 
@@ -26,7 +27,7 @@ export default function Aluno({ params }: { params: { id: string } }) {
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/alunos`);
         const data = await response.json();
-        const alunoEncontrado = data.find((aluno: any) => aluno.id === Number(params.id));
+        const alunoEncontrado = data.find((aluno: TipoAluno) => aluno.id === Number(params.id));
 
         if (alunoEncontrado) {
           setAluno(alunoEncontrado);
@@ -85,7 +86,7 @@ export default function Aluno({ params }: { params: { id: string } }) {
     <div>
       <section className='exibir-aluno'>
         <div className="head">
-          
+          <Link href="/" className='home-button'>Home</Link>
           <Image 
             src={aluno.foto.startsWith('/assets') ? aluno.foto : `/assets/${aluno.foto}`}  
             alt={`Foto de ${aluno.nome}`} 

@@ -56,75 +56,75 @@ export default function CadAlunos() {
         <h1>Cadastro de Alunos</h1>
 
           <div>
-            <form onSubmit={handleSubmit} className="max-w-sm mx-auto">
-                <div>
-                    <label htmlFor="idNome" className="block mb-2 text-sm font-medium">Nome do Aluno:</label>
-                    <input
-                    type="text"
-                    name="nome"
-                    id="idNome"
-                    value={aluno.nome}
-                    onChange={(e) => setAluno({ ...aluno, nome: e.target.value })}
-                    placeholder="Nome do aluno"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="idIdade" className="block mb-2 text-sm font-medium">Idade do Aluno:</label>
-                    <input
-                    type="number"
-                    name="idade"
-                    id="idIdade"
-                    value={aluno.idade}
-                    onChange={(e) => setAluno({ ...aluno, idade: parseInt(e.target.value) })}
-                    placeholder="Idade do aluno"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="idFoto" className="block mb-2 text-sm font-medium">Foto do Aluno:</label>
-                    <input
-                    type="text"
-                    name="foto"
-                    id="idFoto"
-                    value={aluno.foto}
-                    onChange={(e) => setAluno({ ...aluno, foto: e.target.value })}
-                    placeholder="URL da foto do aluno"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="idDescricao" className="block mb-2 text-sm font-medium">Descrição:</label>
-                    <textarea
-                    name="descricao"
-                    id="idDescricao"
-                    value={aluno.descricao}
-                    onChange={(e) => setAluno({ ...aluno, descricao: e.target.value })}
-                    placeholder="Descrição do aluno"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="idHardSkills" className="block mb-2 text-sm font-medium">Hard Skills:</label>
-                    <input
-                    type="text"
-                    name="hardSkills"
-                    id="idHardSkills"
-                    value={aluno.hardSkills.join(", ")}
-                    onChange={(e) => setAluno({ ...aluno, hardSkills: e.target.value.split(", ") })}
-                    placeholder="Hard skills, separadas por vírgula"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="idSoftSkills" className="block mb-2 text-sm font-medium">Soft Skills:</label>
-                    <input
-                    type="text"
-                    name="softSkills"
-                    id="idSoftSkills"
-                    value={aluno.softSkills.join(", ")}
-                    onChange={(e) => setAluno({ ...aluno, softSkills: e.target.value.split(", ") })}
-                    placeholder="Soft skills, separadas por vírgula"
-                    />
-                </div>
-                <div>
-                    <button type="submit">Cadastrar</button>
-                </div>
+          <form onSubmit={handleSubmit} className="max-w-sm mx-auto">
+            <div>
+                <label htmlFor="idNome" className="block mb-2 text-sm font-medium">Nome do Aluno:</label>
+                <input
+                type="text"
+                name="nome"
+                id="idNome"
+                value={aluno.nome}
+                onChange={(e) => setAluno({ ...aluno, nome: e.target.value })}
+                placeholder="Nome do aluno"
+                />
+            </div>
+            <div>
+                <label htmlFor="idIdade" className="block mb-2 text-sm font-medium">Idade do Aluno:</label>
+                <input
+                type="number"
+                name="idade"
+                id="idIdade"
+                value={aluno.idade}
+                onChange={(e) => setAluno({ ...aluno, idade: parseInt(e.target.value) })}
+                placeholder="Idade do aluno"
+                />
+            </div>
+            <div>
+                <label htmlFor="idFoto" className="block mb-2 text-sm font-medium">Foto do Aluno:</label>
+                <input
+                type="text"
+                name="foto"
+                id="idFoto"
+                value={aluno.foto}
+                onChange={(e) => setAluno({ ...aluno, foto: e.target.value })}
+                placeholder="URL da foto do aluno"
+                />
+            </div>
+            <div>
+                <label htmlFor="idDescricao" className="block mb-2 text-sm font-medium">Descrição:</label>
+                <textarea
+                name="descricao"
+                id="idDescricao"
+                value={aluno.descricao}
+                onChange={(e) => setAluno({ ...aluno, descricao: e.target.value })}
+                placeholder="Descrição do aluno"
+                />
+            </div>
+            <div>
+                <label htmlFor="idHardSkills" className="block mb-2 text-sm font-medium">Hard Skills:</label>
+                <input
+                type="text"
+                name="hardSkills"
+                id="idHardSkills"
+                value={aluno.hardSkills.join(", ")}
+                onChange={(e) => setAluno({ ...aluno, hardSkills: e.target.value.split(", ") })}
+                placeholder="Hard skills, separadas por vírgula"
+                />
+            </div>
+            <div>
+                <label htmlFor="idSoftSkills" className="block mb-2 text-sm font-medium">Soft Skills:</label>
+                <input
+                type="text"
+                name="softSkills"
+                id="idSoftSkills"
+                value={aluno.softSkills.join(", ")}
+                onChange={(e) => setAluno({ ...aluno, softSkills: e.target.value.split(", ") })}
+                placeholder="Soft skills, separadas por vírgula"
+                />
+            </div>
+            <div>
+                <button type="submit">Cadastrar</button>
+            </div>
             </form>
 
           </div>

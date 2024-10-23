@@ -16,20 +16,19 @@ export default function Cabecalho() {
   };
 
   return (
-    <header>
-      <Image
-        src={'/assets/globo.png'}  
-        alt={'logo'} 
-        width={200} 
-        height={200} 
-      />
-      <h3>ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</h3>
-      
-      {/* Botão Home */}
+    <header className="cabecalho">
+      <div className='logo-container'>
+        <Image className='cabecalho-logo'
+          src={'/assets/globo.png'}  
+          alt={'logo'} 
+          width={200} 
+          height={200} 
+        />
+        <h3>ANÁLISE E DESENVOLVIMENTO<br></br>DE SISTEMAS</h3>
+      </div>
+     
       <nav className="info">
-        <Link href="/">
-          <HomeButton>Home</HomeButton>
-        </Link>
+        
         <button onClick={() => setModal1Open(true)}>Checkpoint</button>
         <button onClick={() => setModal2Open(true)}>Challenge</button>
         <button onClick={() => setModal3Open(true)}>Global Solution</button>
@@ -66,18 +65,6 @@ export default function Cabecalho() {
   );
 }
 
-const HomeButton = styled.button`
-  padding: 10px 20px;
-  background-color: #1E90FF;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  margin-right: 15px;
-  cursor: pointer;
-  &:hover {
-    background-color: #4682B4;
-  }
-`;
 
 const Overlay = styled.div`
   position: fixed;
