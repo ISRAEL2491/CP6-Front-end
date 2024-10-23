@@ -1,15 +1,10 @@
-
 "use client";
 import Image from 'next/image';
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { TipoAluno } from "@/type";
-
 export default function Alunos() {
-
-
     const [info, setInfo] = useState<TipoAluno[]>([])
-
     useEffect(() => {
         const chamadaApi = async () => {
             
@@ -21,7 +16,6 @@ export default function Alunos() {
         chamadaApi();
     }, []);
     return (
-
         <div>
         <h1>Lista de alunos</h1>
           <div className="cards">

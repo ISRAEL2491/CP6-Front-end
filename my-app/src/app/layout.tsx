@@ -1,7 +1,8 @@
+
 import Cabecalho from "@/components/Cabecalho/Cabecalho";
-import Menu from "@/components/Menu/Menu";
 import Rodape from "@/components/Rodape/Rodape";
 import type { Metadata } from "next";
+import "./globals.css";
 
 
 export const metadata: Metadata = {
@@ -16,9 +17,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
-        {children}
-
+        <Cabecalho />
+        <main>{children}</main>
+        <Rodape />
       </body>
     </html>
   );
