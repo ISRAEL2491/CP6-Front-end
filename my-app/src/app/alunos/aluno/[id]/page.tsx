@@ -61,6 +61,7 @@ export default function Aluno({ params }: { params: { id: string } }) {
 
     const novoAluno = {
       nome: aluno.nome,
+      idade: aluno.idade,
       descricao: aluno.descricao,
       hardSkills: aluno.hardSkills,
       softSkills: aluno.softSkills
@@ -77,6 +78,7 @@ export default function Aluno({ params }: { params: { id: string } }) {
     if (response.ok) {
       setEditMode(false); 
       router.push(`/alunos/${params.id}`);
+
     } else {
       console.error("Erro ao atualizar aluno");
     }

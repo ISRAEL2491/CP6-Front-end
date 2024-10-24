@@ -1,4 +1,3 @@
-
 import { NextApiRequest, NextApiResponse } from 'next';
 
 let alunos = [
@@ -132,6 +131,7 @@ let alunos = [
   }
 ];
 
+
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { id } = req.query;
 
@@ -151,7 +151,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     if (!novoAluno.nome || !novoAluno.idade) {
       return res.status(400).json({ message: "Campos obrigatórios não preenchidos." });
     }
-    novoAluno.id = Date.now(); // Gera um ID único
+    novoAluno.id = Date.now();
     alunos.push(novoAluno);
     res.status(201).json(novoAluno);
   } else if (req.method === 'PUT') {
@@ -163,8 +163,16 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     } else {
       res.status(404).json({ message: "Aluno não encontrado" });
     }
+  } else if (req.method === 'DELETE') {
+    const index = alunos.findIndex((aluno) => aluno.id === Number(id));
+    if (index !== -1) {
+      alunos.splice(index, 1); 
+      res.status(200).json({ message: "Aluno removido com sucesso." });
+    } else {
+      res.status(404).json({ message: "Aluno não encontrado" });
+    }
   } else {
-    res.setHeader('Allow', ['GET', 'POST', 'PUT']);
+    res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 }
