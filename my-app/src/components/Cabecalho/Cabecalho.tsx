@@ -4,66 +4,71 @@ import { useState } from "react";
 import styled from "styled-components";
 
 export default function Cabecalho() {
-  const [isModal1Open, setModal1Open] = useState(false);
-  const [isModal2Open, setModal2Open] = useState(false);
-  const [isModal3Open, setModal3Open] = useState(false);
+  const [activeModal, setActiveModal] = useState<string | null>(null);
 
   const closeModal = () => {
-    setModal1Open(false);
-    setModal2Open(false);
-    setModal3Open(false);
+    setActiveModal(null);
+  };
+
+  const openModal = (modal: string) => {
+    setActiveModal(modal);
   };
 
   return (
     <header className="cabecalho">
       <div className='logo-container'>
-        <Image className='cabecalho-logo'
+        <Image 
+          className='cabecalho-logo'
           src={'/assets/globo.png'}  
           alt={'logo'} 
           width={200} 
           height={200} 
         />
-        <h3>ANÁLISE E DESENVOLVIMENTO<br></br>DE SISTEMAS</h3>
+        <h3>ANÁLISE E DESENVOLVIMENTO<br />DE SISTEMAS</h3>
       </div>
 
       <nav className="info">
-        
-        <button onClick={() => setModal1Open(true)}>Checkpoint</button>
-        <button onClick={() => setModal2Open(true)}>Challenge</button>
-        <button onClick={() => setModal3Open(true)}>Global Solution</button>
+        <button onClick={() => openModal("checkpoint")}>Checkpoint</button>
+        <button onClick={() => openModal("challenge")}>Challenge</button>
+        <button onClick={() => openModal("globalSolution")}>Global Solution</button>
       </nav>
 
-      {isModal1Open && (
-        <Overlay onClick={closeModal}>
-          <ModalContent onClick={(e) => e.stopPropagation()}>
-            <CloseButton onClick={() => setModal1Open(false)}>X</CloseButton>
-            <h2 className="mt-4 mb-4">Checkpoint</h2>
-            <p>Avaliações intermediárias para acompanhamento do progresso</p>
-          </ModalContent>
-        </Overlay>
+      {activeModal === "checkpoint" && (
+        <Modal onClose={closeModal} title="Checkpoint">
+          <p>Avaliações intermediárias para acompanhamento do progresso</p>
+        </Modal>
       )}
-      {isModal2Open && (
-        <Overlay onClick={closeModal}>
-          <ModalContent onClick={(e) => e.stopPropagation()}>
-            <CloseButton onClick={() => setModal2Open(false)}>X</CloseButton>
-            <h2 className="mt-4 mb-4">Challenge</h2>
-            <p>Avaliações em formato de desafios, com foco em resolução de problemas com entregas programadas</p>
-          </ModalContent>
-        </Overlay>
+      {activeModal === "challenge" && (
+        <Modal onClose={closeModal} title="Challenge">
+          <p>Avaliações em formato de desafios, com foco em resolução de problemas com entregas programadas</p>
+        </Modal>
       )}
-      {isModal3Open && (
-        <Overlay onClick={closeModal}>
-          <ModalContent onClick={(e) => e.stopPropagation()}>
-            <CloseButton onClick={() => setModal3Open(false)}>X</CloseButton>
-            <h2 className="mt-4 mb-4">Global Solution</h2>
-            <p>Projetos ou avaliações integradoras, que envolvem a aplicação global dos conhecimentos adquiridos</p>
-          </ModalContent>
-        </Overlay>
+      {activeModal === "globalSolution" && (
+        <Modal onClose={closeModal} title="Global Solution">
+          <p>Projetos ou avaliações integradoras, que envolvem a aplicação global dos conhecimentos adquiridos</p>
+        </Modal>
       )}
     </header>
   );
 }
 
+interface ModalProps {
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+}
+
+const Modal: React.FC<ModalProps> = ({ onClose, title, children }) => {
+  return (
+    <Overlay onClick={onClose}>
+      <ModalContent onClick={(e) => e.stopPropagation()}>
+        <CloseButton onClick={onClose} aria-label="Fechar Modal">X</CloseButton>
+        <h2>{title}</h2>
+        {children}
+      </ModalContent>
+    </Overlay>
+  );
+};
 
 const Overlay = styled.div`
   position: fixed;
@@ -79,13 +84,12 @@ const Overlay = styled.div`
 `;
 
 const ModalContent = styled.div`
-  background-color:  #0e0e0e;
+  background-color: #0e0e0e;
   color: white;
   padding: 20px;
   border-radius: 8px;
   max-width: 500px;
   width: 100%;
-  height: 10em;
   position: relative;
 `;
 
