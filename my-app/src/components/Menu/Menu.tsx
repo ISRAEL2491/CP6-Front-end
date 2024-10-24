@@ -6,10 +6,9 @@ export default function Menu() {
       <nav>
         <ul className="menu">
           <li><Link href="/alunos/aluno/558576">Israel Vieira</Link></li>
-          <li><Link href="/alunos/aluno/558578">Carlos Souza</Link></li>
+          <li><Link href="/alunos/aluno/558470">Carlos Souza</Link></li>
           <li><Link href="/alunos/aluno/558575">Maria Brigidio</Link></li>
           <li><Link href="/alunos/aluno/558577">Marcus Calazans</Link></li>
-          <li><Link href="/alunos/cad-aluno" className="new">Novo Aluno</Link></li>
         </ul>
       </nav>
     </div>
