@@ -1,24 +1,19 @@
-import { client } from "@/lib/appwrite_client";
-import { TipoAluno } from "@/type";
-import { Databases, ID, Query } from "appwrite";
 import { NextResponse } from "next/server";
 
-const database = new Databases(client);
 
-// GET ALL
 export async function getProdutos() {
   try {
-    const response = await database.listDocuments(
-      process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID || "671934f600149818b5b9", // Database ID
-      process.env.NEXT_PUBLIC_APPWRITE_COLLECTIONS_ID || "671935e9000988359273", // Collection ID
-      [Query.orderAsc("$createdAt")]
-    );
-    return response.documents;
+    const response = await fetch("http://localhost:3000/api/alunos", {
+      method: "GET",
+    });
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.error("Falha na leitura dos produtos!", error);
     throw new Error("Não foi possível listar os dados!");
   }
 }
+
 
 export async function GET() {
   try {
@@ -29,20 +24,23 @@ export async function GET() {
   }
 }
 
-export async function criarProduto(produto: TipoAluno) {
+export async function criarProduto(produto: any) {
   try {
-    const response = await database.createDocument(
-      process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID || "671934f600149818b5b9", // Database ID
-      process.env.NEXT_PUBLIC_APPWRITE_COLLECTIONS_ID || "671935e9000988359273", // Collection ID
-      ID.unique(),
-      produto
-    );
-    return response;
+    const response = await fetch("http://localhost:3000/api/alunos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(produto),
+    });
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.error("Falha na criação do produto!", error);
     throw new Error("Não foi possível criar o produto!");
   }
 }
+
 
 export async function POST(request: Request) {
   try {
