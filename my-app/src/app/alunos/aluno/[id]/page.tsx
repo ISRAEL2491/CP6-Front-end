@@ -1,5 +1,5 @@
 "use client";  
-import { TipoAluno } from '@/type';
+import { Challenge, Checkpoint, GlobalSolution, Materia, TipoAluno } from '@/type';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -34,6 +34,7 @@ export default function Aluno({ params }: { params: { id: string } }) {
         } else {
           setErro("Aluno não encontrado");
         }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         setErro("Erro ao buscar os dados do aluno.");
       } finally {
@@ -111,10 +112,10 @@ export default function Aluno({ params }: { params: { id: string } }) {
             ))}
           </ul>
           <h2>Checkpoints</h2>
-          {aluno.materias.map((materia: any) => (
+          {aluno.materias.map((materia: Materia) => (
             <div key={materia.id}>
               <h3>{materia.nome}</h3>
-              {materia.checkpoints.map((checkpoint: any) => (
+              {materia.checkpoints.map((checkpoint:Checkpoint) => (
                 <div key={checkpoint.id}>
                   <p>Data: {checkpoint.data}</p>
                   <p>Nota: {checkpoint.nota}</p>
@@ -123,6 +124,31 @@ export default function Aluno({ params }: { params: { id: string } }) {
               ))}
             </div>
           ))}
+          <h2>Challenge Sprints</h2>
+          {aluno.materias.map((materia: Materia) => (
+            <div key={materia.id}>
+              <h3>{materia.nome}</h3>
+              {materia.challenges.map((challenge:Challenge) => (
+                <div key={challenge.id}>
+                  <p>Nota: {challenge.nota}</p>
+                  <p>Descrição: {challenge.descricao}</p>
+                </div>
+              ))}
+            </div>
+            ))}
+            <h2>Global Solution</h2>
+          {aluno.materias.map((materia: Materia) => (
+            <div key={materia.id}>
+              <h3>{materia.nome}</h3>
+              {materia.globalSolutions.map((gs:GlobalSolution) => (
+                <div key={gs.id}>
+                  <p>Link: {gs.link}</p>
+                  <p>Nota: {gs.nota}</p>
+                  <p>Descrição: {gs.descricao}</p>
+                </div>
+              ))}
+            </div>
+            ))}
         </div>
       </section>
 

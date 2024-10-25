@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -84,6 +86,10 @@ header h3 {
     padding: 4em; 
     justify-content: space-evenly;
     font-weight: bold;
+}
+
+.menu li:hover{
+    color: #ccc;
 }
 
 .new {
