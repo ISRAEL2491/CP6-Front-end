@@ -1,124 +1,156 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
+/* global.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #0e0e0e;
-    color: #fff;
-}
+@layer components {
+    body {
+        @apply font-poppins bg-[#0e0e0e] text-white;
+    }
 
-.cabecalho {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px;
-}
 
-.logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-right: 8em;
-}
+    .cabecalho {
+        @apply flex justify-between items-center p-4;
+    }
 
-.cabecalho-logo {
-    width: 90px;
-    height: 90px;
-}
+    .logo-container {
+        @apply flex items-center justify-center pr-32;
+    }
 
-header h3 {
-    font-size: 1.5em;
-    line-height: 1.0;
-}
+    .cabecalho-logo {
+        @apply w-[90px] h-[90px] border-0; 
+    }
 
-.info {
-    display: flex;
-    justify-content: space-evenly;
-}
+    header h3 {
+        @apply text-xl leading-tight;
+    }
 
-.info button {
-    padding: 10px;
-}
+    .info {
+        @apply flex justify-evenly gap-10 pr-10;
+    }
 
-.home-button {
-    margin-left: 32px;
-    color: #fff;
-    background: none;
-    border: none;
-    font-size: 0.875rem;
-    font-weight: bold;
-    cursor: pointer;
-}
+    .info button {
+        @apply p-2;
+    }
 
-.home-button:hover {
-    color: #ccc;
-}
+    .home-button {
+        @apply p-10 text-white bg-none border-none text-sm font-bold cursor-pointer;
+    }
 
-.img-home {
-    margin-left: 20%;
-}
 
-.home-text {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
+    .img-home {
+        @apply ml-[20%] border-0; 
+    }
 
-.home-text h1 {
-    font-size: 12vw;
-    padding-left: 60px;
-}
+    .home-text {
+        @apply flex flex-row justify-between;
+    }
 
-.home-page p {
-    font-size: 0.8em;
-    max-width: 40%;
-    padding: 3rem;
-    padding-right: 5em;
-}
+    .home-text h1 {
+        @apply text-[11vw] pl-16;
+    }
 
-.menu {
-    display: flex;
-    flex-direction: row;
-    gap: 1em; 
-    padding: 4em; 
-    justify-content: space-evenly;
-    font-weight: bold;
-}
+    .home-page p {
+        @apply text-[0.8em] max-w-[40%] p-12 pr-20;
+    }
 
-.menu li:hover{
-    color: #ccc;
-}
+    .menu {
+        @apply flex flex-row gap-4 p-16 justify-evenly font-bold list-none text-white;
+    }
 
-.new {
-    color: #f63562;
-}
+    .menu li:hover {
+        @apply text-[#f63562];
+    }
 
-.rodape {
-    display: flex;
-    flex-direction: row;
-    margin-top: 2em;
-    padding: 60px;
-}
+    .new {
+        @apply text-[#f63562];
+    }
 
-.rodape h2 {
-    margin-right: 4.5em;
-    font-size: 4.2em;
-    font-weight: bold;
-    color: #f63562;
-}
+    .rodape {
+        @apply flex flex-row mt-8 p-[60px];
+    }
 
-.img-rodape {
-    margin-left: 60px;
-    padding: 100px;
-}
+    .rodape h2 {
+        @apply mr-[4.5em] text-[4.2em] font-bold text-[#f63562];
+    }
 
-.info {
-    margin-right: 10px;
-}
+    .rodape-image {
+        @apply  pl-[100px] border-0; 
+    }
 
-.info button {
-    padding: 10px;
+    .info {
+        @apply mr-2.5;
+    }
+
+    .info button {
+        @apply p-2;
+    }
+
+    .info button:hover {
+        @apply text-[#f63562];
+    }
+
+    .head-aluno {
+        @apply flex flex-row pl-16 pb-10;
+    }
+
+    .descricao-aluno {
+        @apply flex flex-col gap-4 text-[0.9em] max-w-[40%] pl-6 pr-20;
+    }
+
+
+    .foto-aluno {
+        @apply h-[200px] w-[300px];
+    }
+
+    .aluno h1 {
+        @apply text-[8vw] pl-10 uppercase leading-none tracking-tight;
+    }
+
+    .skills {
+        @apply flex flex-row p-20 ml-10 gap-20;
+    }
+
+    .skill {
+        @apply flex flex-col gap-4;
+    }
+
+    .skill h2 {
+        @apply text-[1.5em] font-bold;
+    }
+
+    .skill li {
+        @apply text-[0.8em] ;
+    }
+
+    .avaliacoes {
+        @apply  flex flex-col ml-10;
+    }
+
+    .avaliacoes h2{
+        @apply text-[3em] font-bold text-white uppercase border-t border-gray-400 pt-12 mt-20 mb-10;
+    }
+
+    .avaliacao {
+        @apply grid grid-cols-3 gap-10 p-10 pb-20;
+    }
+
+
+    .avaliacao h3 {
+        @apply flex justify-center p-10 w-full text-[1.5em] font-bold text-[#f63562] uppercase text-center;
+    }
+
+
+    .exibir-aluno {
+        @apply flex flex-col justify-center;
+    }
+
+    .botao-editar {
+        @apply border border-white px-4 py-2 rounded ml-10 w-[10%];
+    }
+
+
+
+
 }
