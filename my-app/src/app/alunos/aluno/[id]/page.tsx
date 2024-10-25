@@ -86,76 +86,110 @@ export default function Aluno({ params }: { params: { id: string } }) {
   };
 
   return (
-    <div>
+    <div className='aluno'>
       <section className='exibir-aluno'>
-        <div className="head">
+        <div>
           <Link href="/" className='home-button'>Home</Link>
           <Image 
-            src={aluno.foto.startsWith('/assets') ? aluno.foto : `/assets/${aluno.foto}`}  
-            alt={`Foto de ${aluno.nome}`} 
-            width={200} 
-            height={200} 
+            src={'/assets/risco-titulo.png'}  
+            alt={'ilustração'} 
+            width={500} 
+            height={2} 
+            className="img-home"
           />
-          
-          <h1>{aluno.nome}</h1>
-          <p>Descrição: {aluno.descricao}</p>
-          <h2>Hard Skills</h2>
-          <ul>
-            {aluno.hardSkills.map((skill: string) => (
-              <li key={skill}>{skill}</li>
-            ))}
-          </ul>
-          <h2>Soft Skills</h2>
-          <ul>
-            {aluno.softSkills.map((skill: string) => (
-              <li key={skill}>{skill}</li>
-            ))}
-          </ul>
-          <h2>Checkpoints</h2>
-          {aluno.materias.map((materia: Materia) => (
-            <div key={materia.id}>
-              <h3>{materia.nome}</h3>
-              {materia.checkpoints.map((checkpoint:Checkpoint) => (
-                <div key={checkpoint.id}>
-                  <p>Data: {checkpoint.data}</p>
-                  <p>Nota: {checkpoint.nota}</p>
-                  <p>Feedback: {checkpoint.feedback}</p>
+          <div className="head-aluno">
+            <Image 
+              src={aluno.foto.startsWith('/assets') ? aluno.foto : `/assets/${aluno.foto}`}  
+              alt={`Foto de ${aluno.nome}`} 
+              width={200} 
+              height={100} 
+              className='foto-aluno'
+            />
+            
+            <h1>{aluno.nome}</h1>
+            <div className='descricao-aluno'>
+              <p>Idade: {aluno.idade} anos</p>
+              <p>{aluno.descricao}</p>
+              <p className="flex justify-end font-bold text-[#f63562]">RM: {aluno.id}</p>
+            </div>
+          </div>
+          <div className='skills'>
+            <div className='skill'>
+              <h2>Hard Skills</h2>
+              <ul>
+                {aluno.hardSkills.map((skill: string) => (
+                  <li key={skill}>• {skill}</li>
+                ))}
+              </ul>
+              </div>
+            <div className='skill'>
+              <h2>Soft Skills</h2>
+              <ul>
+                {aluno.softSkills.map((skill: string) => (
+                  <li key={skill}>• {skill}</li>
+                ))}
+              </ul>
+            </div>
+
+          </div>
+
+          <div className='avaliacoes'>
+            <h2>Checkpoints</h2>
+            <div className='avaliacao'>
+              {aluno.materias.map((materia: Materia) => (
+                <div className="flex flex-col" key={materia.id}>
+                  <h3>{materia.nome}</h3>
+                  {materia.checkpoints.map((checkpoint:Checkpoint) => (
+                    <div key={checkpoint.id}>
+                      <p>Data: {checkpoint.data}</p>
+                      <p>Nota: {checkpoint.nota}</p>
+                      <p>Feedback: {checkpoint.feedback}</p>
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>
-          ))}
-          <h2>Challenge Sprints</h2>
-          {aluno.materias.map((materia: Materia) => (
-            <div key={materia.id}>
-              <h3>{materia.nome}</h3>
-              {materia.challenges.map((challenge:Challenge) => (
-                <div key={challenge.id}>
-                  <p>Nota: {challenge.nota}</p>
-                  <p>Descrição: {challenge.descricao}</p>
+
+            <h2>Challenge Sprints</h2>
+            <div className='avaliacao'>
+              {aluno.materias.map((materia: Materia) => (
+                <div key={materia.id}>
+                  <h3>{materia.nome}</h3>
+                  {materia.challenges.map((challenge:Challenge) => (
+                    <div key={challenge.id}>
+                      <p>Nota: {challenge.nota}</p>
+                      <p>Descrição: {challenge.descricao}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
+                ))}
             </div>
-            ))}
+
             <h2>Global Solution</h2>
-          {aluno.materias.map((materia: Materia) => (
-            <div key={materia.id}>
-              <h3>{materia.nome}</h3>
-              {materia.globalSolutions.map((gs:GlobalSolution) => (
-                <div key={gs.id}>
-                  <p>Link: {gs.link}</p>
-                  <p>Nota: {gs.nota}</p>
-                  <p>Descrição: {gs.descricao}</p>
+            <div className='avaliacao'>
+              {aluno.materias.map((materia: Materia) => (
+                <div key={materia.id}>
+                  <h3>{materia.nome}</h3>
+                  {materia.globalSolutions.map((gs:GlobalSolution) => (
+                    <div key={gs.id}>
+                      <p>Link: {gs.link}</p>
+                      <p>Nota: {gs.nota}</p>
+                      <p>Descrição: {gs.descricao}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
+                ))}
             </div>
-            ))}
+          </div>
+
         </div>
-      </section>
 
       
-      <button onClick={handleEditToggle} className="btn-editar">
-        {editMode ? "Cancelar" : "Editar"}
-      </button>
+        <button onClick={handleEditToggle} className="botao-editar">
+          {editMode ? "Cancelar" : "Editar"}
+        </button>
+
+      </section>
 
       
       {editMode && (
