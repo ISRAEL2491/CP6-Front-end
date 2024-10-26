@@ -188,7 +188,7 @@ export default function Aluno({ params }: { params: { id: string } }) {
         <button onClick={handleEditToggle} className="botao-editar">
           {editMode ? "Cancelar" : "Editar"}
         </button>
-        <Link href={`/alunos/aluno/${aluno.id}/nova-materia`} className="botao-editar">
+        <Link href={`/alunos/aluno/nova-materia`} className="botao-editar">
           Nova Matéria
         </Link>
 
