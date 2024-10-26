@@ -102,42 +102,113 @@
     .skills {
         @apply flex flex-row gap-20 p-20 ml-10;
     }
-    
+
     .skill {
-        @apply flex flex-col gap-4;
+        @apply flex flex-col gap-4 bg-gray-900 p-6 rounded-lg shadow-md w-[45%];
     }
-    
+
     .skill h2 {
-        @apply text-lg font-bold; /* Usando tamanho de texto Tailwind para consistência */
+        @apply text-lg font-bold text-[#f63562] mb-4; 
     }
-    
+
+    .skill ul {
+        @apply list-disc list-inside text-white;
+    }
+
     .skill li {
-        @apply text-sm; /* Também usa um tamanho de texto Tailwind */
+        @apply text-sm mb-2; 
     }
     
     .avaliacoes {
-        @apply flex flex-col ml-10;
+        @apply flex flex-col ml-10 mt-10;
     }
-    
+
     .avaliacoes h2 {
         @apply text-3xl font-bold text-white uppercase border-t border-gray-400 pt-12 mt-20 mb-10;
     }
-    
+
     .avaliacao {
-        @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 p-10 pb-20;
+        @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 p-10 pb-20 bg-gray-900 rounded-lg shadow-lg;
     }
-    
+
     .avaliacao h3 {
-        @apply flex justify-center items-center p-10 w-full text-xl font-bold text-[#f63562] uppercase text-center;
-    }    
+        @apply flex justify-center items-center p-4 w-full text-xl font-bold text-[#f63562] uppercase text-center mb-4;
+    }
+
+    .avaliacao div {
+        @apply bg-gray-800 p-4 rounded-md shadow-md;
+    }
+
+    .avaliacao p {
+        @apply text-sm text-gray-300 mb-2;
+    }
 
     .exibir-aluno {
         @apply flex flex-col justify-center;
     }
 
     .botao-editar {
-        @apply border border-white px-4 py-2 rounded ml-10 w-[10%];
+        @apply border border-white px-4 py-2 rounded ml-10 w-[10%] mt-4 transition-colors duration-300 ease-in-out;
     }
 
+    .botao-editar:hover {
+        @apply bg-[#f63562] text-white;
+    }
 
+    .editar-aluno {
+        @apply bg-gray-800 p-8 rounded-lg shadow-lg mt-10 w-[80%] mx-auto;
+    }
+
+    .editar-aluno h1 {
+        @apply text-3xl font-bold mb-6;
+    }
+
+    .editar-aluno form table {
+        @apply w-full;
+    }
+
+    .editar-aluno form td {
+        @apply p-4;
+    }
+
+    .editar-aluno input[type="text"],
+    .editar-aluno textarea {
+        @apply w-full p-2 border border-gray-300 rounded-md text-black;
+    }
+
+    .editar-aluno button[type="submit"] {
+        @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4;
+    }
+
+    .adicionar-materia {
+        @apply bg-gray-800 p-8 rounded-lg shadow-lg mt-10 w-[80%] mx-auto;
+    }
+
+    .adicionar-materia h1 {
+        @apply text-3xl font-bold mb-6;
+    }
+
+    .adicionar-materia form table {
+        @apply w-full;
+    }
+
+    .adicionar-materia form td {
+        @apply p-4;
+    }
+
+    .adicionar-materia input[type="text"] {
+        @apply w-full p-2 border border-gray-300 rounded-md text-black;
+    }
+
+    .adicionar-materia button[type="submit"] {
+        @apply bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-4;
+    }
+
+    .botao-nova-materia {
+        @apply border border-white px-4 py-2 rounded ml-10 w-[20%] mt-4 transition-colors duration-300 ease-in-out;
+    }
+
+    .botao-nova-materia:hover {
+        @apply bg-[#32a852] text-white;
+    }
 }

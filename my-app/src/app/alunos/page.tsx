@@ -23,27 +23,28 @@ export default function Alunos() {
     }, []);
 
     return (
-        <div>
-            <h1>Lista de alunos</h1>
-            <div className="cards">
+        <div className="p-8">
+            <h1 className="text-3xl font-bold mb-6">Lista de Alunos</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 {info.length > 0 ? (
                     info.map((aluno) => (
-                        <div key={aluno.id}>
-                            <p>{aluno.id}</p>
+                        <div key={aluno.id} className="bg-white rounded-lg shadow-md p-4">
+                            <p className="font-bold text-lg mb-2">{aluno.nome}</p>
                             <Image 
-                                src={aluno.foto} 
+                                src={aluno.foto ? aluno.foto : '/assets/default-photo.png'} 
                                 alt={`Foto de ${aluno.nome}`} 
                                 width={200} 
                                 height={200} 
+                                className="rounded-full mx-auto mb-4"
                             />
-                            <p>{aluno.nome}</p>
-                            <Link href={`/alunos/${aluno.id}`}>
+                            <p className="text-gray-600 mb-4">ID: {aluno.id}</p>
+                            <Link href={`/alunos/${aluno.id}`} className="text-blue-500 hover:underline">
                                 Ver detalhes
                             </Link>
                         </div>
                     ))
                 ) : (
-                    <p>Nenhum aluno encontrado.</p>
+                    <p className="text-center text-gray-500">Nenhum aluno encontrado.</p>
                 )}
             </div>
         </div>

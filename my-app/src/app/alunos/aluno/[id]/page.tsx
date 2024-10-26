@@ -1,14 +1,13 @@
-"use client";  
+"use client";
 import { Challenge, Checkpoint, GlobalSolution, Materia, TipoAluno } from '@/type';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
 
-
 export default function Aluno({ params }: { params: { id: string } }) {
   const [aluno, setAluno] = useState<TipoAluno>({
-    id:0,
+    id: 0,
     nome: "",
     idade: 0,
     foto: "",
@@ -17,9 +16,17 @@ export default function Aluno({ params }: { params: { id: string } }) {
     softSkills: [],
     materias: [],
   });
+  const [novaMateria, setNovaMateria] = useState<Materia>({
+    id: 0,
+    nome: "",
+    checkpoints: [],
+    challenges: [],
+    globalSolutions: [],
+  });
   const [erro, setErro] = useState<string | null>(null);
   const [carregando, setCarregando] = useState(true);
-  const [editMode, setEditMode] = useState(false);  
+  const [editMode, setEditMode] = useState(false);
+  const [addMateriaMode, setAddMateriaMode] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -34,7 +41,6 @@ export default function Aluno({ params }: { params: { id: string } }) {
         } else {
           setErro("Aluno não encontrado");
         }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         setErro("Erro ao buscar os dados do aluno.");
       } finally {
@@ -54,18 +60,18 @@ export default function Aluno({ params }: { params: { id: string } }) {
   }
 
   const handleEditToggle = () => {
-    setEditMode(!editMode); 
+    setEditMode(!editMode);
+  };
+
+  const handleAddMateriaToggle = () => {
+    setAddMateriaMode(!addMateriaMode);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const novoAluno = {
-      nome: aluno.nome,
-      idade: aluno.idade,
-      descricao: aluno.descricao,
-      hardSkills: aluno.hardSkills,
-      softSkills: aluno.softSkills
+      ...aluno, // Manter as informações existentes do aluno
     };
 
     const response = await fetch(`/api/alunos/${params.id}`, {
@@ -77,11 +83,38 @@ export default function Aluno({ params }: { params: { id: string } }) {
     });
 
     if (response.ok) {
-      setEditMode(false); 
+      setEditMode(false);
       router.push(`/alunos/${params.id}`);
-
     } else {
       console.error("Erro ao atualizar aluno");
+    }
+  };
+
+  const handleAddMateria = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/alunos/${aluno.id}/materias`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(novaMateria),
+      });
+
+      if (response.ok) {
+        const materiaAdicionada = await response.json();
+        setAluno((prev) => ({
+          ...prev,
+          materias: [...prev.materias, materiaAdicionada],
+        }));
+        setNovaMateria({ id: 0, nome: "", checkpoints: [], challenges: [], globalSolutions: [] });
+        setAddMateriaMode(false);
+      } else {
+        console.error("Erro ao adicionar nova matéria");
+      }
+    } catch (error) {
+      console.error("Erro ao adicionar nova matéria:", error);
     }
   };
 
@@ -90,22 +123,21 @@ export default function Aluno({ params }: { params: { id: string } }) {
       <section className='exibir-aluno'>
         <div>
           <Link href="/" className='home-button'>Home</Link>
-          <Image 
-            src={'/assets/risco-titulo.png'}  
-            alt={'ilustração'} 
-            width={500} 
-            height={2} 
+          <Image
+            src={'/assets/risco-titulo.png'}
+            alt={'ilustração'}
+            width={500}
+            height={2}
             className="img-home"
           />
           <div className="head-aluno">
-            <Image 
-              src={aluno.foto.startsWith('/assets') ? aluno.foto : `/assets/${aluno.foto}`}  
-              alt={`Foto de ${aluno.nome}`} 
-              width={200} 
-              height={100} 
+            <Image
+              src={aluno.foto ? (aluno.foto.startsWith('/assets') ? aluno.foto : `/assets/${aluno.foto}`) : '/assets/default-photo.png'}
+              alt={`Foto de ${aluno.nome}`}
+              width={200}
+              height={100}
               className='foto-aluno'
             />
-            
             <h1>{aluno.nome}</h1>
             <div className='descricao-aluno'>
               <p>Idade: {aluno.idade} anos</p>
@@ -121,7 +153,7 @@ export default function Aluno({ params }: { params: { id: string } }) {
                   <li key={skill}>• {skill}</li>
                 ))}
               </ul>
-              </div>
+            </div>
             <div className='skill'>
               <h2>Soft Skills</h2>
               <ul>
@@ -130,16 +162,14 @@ export default function Aluno({ params }: { params: { id: string } }) {
                 ))}
               </ul>
             </div>
-
           </div>
-
           <div className='avaliacoes'>
             <h2>Checkpoints</h2>
             <div className='avaliacao'>
               {aluno.materias.map((materia: Materia) => (
                 <div className="flex flex-col" key={materia.id}>
                   <h3>{materia.nome}</h3>
-                  {materia.checkpoints.map((checkpoint:Checkpoint) => (
+                  {materia.checkpoints.map((checkpoint: Checkpoint) => (
                     <div key={checkpoint.id}>
                       <p>Data: {checkpoint.data}</p>
                       <p>Nota: {checkpoint.nota}</p>
@@ -155,14 +185,14 @@ export default function Aluno({ params }: { params: { id: string } }) {
               {aluno.materias.map((materia: Materia) => (
                 <div key={materia.id}>
                   <h3>{materia.nome}</h3>
-                  {materia.challenges.map((challenge:Challenge) => (
+                  {materia.challenges.map((challenge: Challenge) => (
                     <div key={challenge.id}>
                       <p>Nota: {challenge.nota}</p>
                       <p>Descrição: {challenge.descricao}</p>
                     </div>
                   ))}
                 </div>
-                ))}
+              ))}
             </div>
 
             <h2>Global Solution</h2>
@@ -170,84 +200,107 @@ export default function Aluno({ params }: { params: { id: string } }) {
               {aluno.materias.map((materia: Materia) => (
                 <div key={materia.id}>
                   <h3>{materia.nome}</h3>
-                  {materia.globalSolutions.map((gs:GlobalSolution) => (
+                  {materia.globalSolutions.map((gs: GlobalSolution) => (
                     <div key={gs.id}>
-                      <p>Link: {gs.link}</p>
+                      <p>Link: <a href={gs.link} target="_blank" rel="noopener noreferrer">{gs.link}</a></p>
                       <p>Nota: {gs.nota}</p>
                       <p>Descrição: {gs.descricao}</p>
                     </div>
                   ))}
                 </div>
-                ))}
+              ))}
             </div>
           </div>
-
         </div>
 
-      
         <button onClick={handleEditToggle} className="botao-editar">
           {editMode ? "Cancelar" : "Editar"}
         </button>
-        <Link href={`/alunos/aluno/nova-materia`} className="botao-editar">
-          Nova Matéria
-        </Link>
-
+        <button onClick={handleAddMateriaToggle} className="botao-editar">
+          {addMateriaMode ? "Cancelar Nova Matéria" : "Nova Matéria"}
+        </button>
       </section>
 
-      
       {editMode && (
         <section className='editar-aluno'>
           <h1>Editar Aluno</h1>
-          {aluno && (
-            <form onSubmit={handleSubmit}>
-              <table>
-                <tbody>
-                  <tr>
-                    <td><label>Nome:</label></td>
-                    <td>
-                      <input
-                        type="text"
-                        value={aluno.nome}
-                        onChange={(e) => setAluno({ ...aluno, nome: e.target.value })}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><label>Descrição:</label></td>
-                    <td>
-                      <textarea
-                        value={aluno.descricao}
-                        onChange={(e) => setAluno({ ...aluno, descricao: e.target.value })}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><label>Hard Skills:</label></td>
-                    <td>
-                      <input
-                        type="text"
-                        value={aluno.hardSkills.join(", ")}
-                        onChange={(e) => setAluno({ ...aluno, hardSkills: e.target.value.split(", ") })}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><label>Soft Skills:</label></td>
-                    <td>
-                      <input
-                        type="text"
-                        value={aluno.softSkills.join(", ")}
-                        onChange={(e) => setAluno({ ...aluno, softSkills: e.target.value.split(", ") })}
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <button type="submit">Salvar Alterações</button>
-            </form>
-          )}
-        </section>
-      )}
-    </div>
+          <form onSubmit={handleSubmit}>
+            <table>
+              <tbody>
+                <tr>
+                  <td><label htmlFor="nomeAluno">Nome:</label></td>
+                  <td>
+                    <input
+                      type="text"
+                      id="nomeAluno"
+                      value={aluno.nome}
+                      onChange={(e) => setAluno({ ...aluno, nome: e.target.value })}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td><label htmlFor="descricaoAluno">Descrição:</label></td>
+                  <td>
+                    <textarea
+                    id="descricaoAluno"
+                    value={aluno.descricao}
+                    onChange={(e) => setAluno({ ...aluno, descricao: e.target.value })}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label htmlFor="hardSkillsAluno">Hard Skills:</label></td>
+                <td>
+                  <input
+                    type="text"
+                    id="hardSkillsAluno"
+                    value={aluno.hardSkills.join(", ")}
+                    onChange={(e) => setAluno({ ...aluno, hardSkills: e.target.value.split(", ") })}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label htmlFor="softSkillsAluno">Soft Skills:</label></td>
+                <td>
+                  <input
+                    type="text"
+                    id="softSkillsAluno"
+                    value={aluno.softSkills.join(", ")}
+                    onChange={(e) => setAluno({ ...aluno, softSkills: e.target.value.split(", ") })}
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="submit">Salvar Alterações</button>
+        </form>
+      </section>
+    )}
+
+    {addMateriaMode && (
+      <section className='adicionar-materia'>
+        <h1>Adicionar Nova Matéria</h1>
+        <form onSubmit={handleAddMateria}>
+          <table>
+            <tbody>
+              <tr>
+                <td><label htmlFor="nomeMateria">Nome da Matéria:</label></td>
+                <td>
+                  <input
+                    type="text"
+                    id="nomeMateria"
+                    value={novaMateria.nome}
+                    onChange={(e) => setNovaMateria({ ...novaMateria, nome: e.target.value })}
+                    required
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="submit">Adicionar Matéria</button>
+        </form>
+      </section>
+    )}
+  </div>
   );
 }
