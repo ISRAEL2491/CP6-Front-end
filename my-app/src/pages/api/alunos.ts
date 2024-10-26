@@ -203,12 +203,12 @@ const alunos = [
     ]
   },
   {
-    id: 558578,
+    id: 558470,
     nome: "Carlos",
-    idade: 21,
-    foto: "/assets/carlos.png",
+    idade: 18,
+    foto: "/assets/carlos.jpg",
     descricao: "Estudante com habilidades sólidas em lógica e design.",
-    hardSkills: ["Python", "Node.js", "MongoDB"],
+    hardSkills: ["Python", "Node.js", "SQL"],
     softSkills: ["Trabalho em equipe", "Resiliência", "Comunicação"],
     materias: [
       {
