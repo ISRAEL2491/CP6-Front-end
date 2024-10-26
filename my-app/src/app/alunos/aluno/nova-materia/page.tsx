@@ -63,8 +63,24 @@ export default function NovaMateria({ params }: { params: { id: string } }) {
             onChange={(e) => setMateria({ ...materia, nome: e.target.value })}
             placeholder="Nome da matéria"
             required
+            className="text-gray-600"
           />
         </div>
+        <div>
+          <label htmlFor="idMateria" className="block mb-2 text-sm font-medium">
+            Id da Matéria:
+          </label>
+          <input
+            type="number"
+            id="idMateria"
+            value={materia.id}
+            onChange={(e) => setMateria({ ...materia, id: e.target.value })}
+            placeholder="Id da matéria"
+            required
+            className="text-gray-600"
+          />
+        </div>
+        
         <div>
           <button type="submit">Cadastrar Matéria</button>
         </div>
