@@ -1,5 +1,5 @@
 "use client";
-
+import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Materia } from "@/type";
@@ -38,7 +38,7 @@ export default function NovaMateria({ params }: { params: { id: string } }) {
 
       if (response.ok) {
         alert("Matéria cadastrada com sucesso!");
-        router.push(`/alunos/${alunoId}`);
+        router.push(`/alunos/aluno/${alunoId}`);
       } else {
         alert("Erro ao cadastrar matéria.");
       }
@@ -50,6 +50,7 @@ export default function NovaMateria({ params }: { params: { id: string } }) {
 
   return (
     <div>
+      <Link href='/' className='home-button'>Home</Link>
       <h1>Cadastrar Nova Matéria</h1>
       <form onSubmit={handleSubmit} className="max-w-sm mx-auto">
         <div>
@@ -71,7 +72,7 @@ export default function NovaMateria({ params }: { params: { id: string } }) {
             Id da Matéria:
           </label>
           <input
-            type="number"
+            type="string"
             id="idMateria"
             value={materia.id}
             onChange={(e) => setMateria({ ...materia, id: e.target.value })}

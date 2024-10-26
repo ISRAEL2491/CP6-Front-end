@@ -206,7 +206,7 @@ const alunos = [
     id: 558470,
     nome: "Carlos",
     idade: 18,
-    foto: "/assets/carlos.jpg",
+    foto: "/assets/cadu.png",
     descricao: "Estudante com habilidades sólidas em lógica e design.",
     hardSkills: ["Python", "Node.js", "SQL"],
     softSkills: ["Trabalho em equipe", "Resiliência", "Comunicação"],
