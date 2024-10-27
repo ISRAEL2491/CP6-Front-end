@@ -9,6 +9,7 @@ export type TipoAluno = {
   materias: Materia[];
 }
 
+
 export type  Materia = {
   id: number;
   nome: string;
