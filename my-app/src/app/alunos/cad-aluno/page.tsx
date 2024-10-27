@@ -36,7 +36,6 @@ export default function CadAlunos() {
       });
 
       if (response.ok) {
-        
         setAluno({
           id: 0,
           nome: "",
@@ -49,7 +48,7 @@ export default function CadAlunos() {
         });
         alert("Aluno cadastrado com sucesso!");
         
-        navigate.push("/Alunos");
+        navigate.push("/alunos");
       } else {
         alert("Erro ao cadastrar aluno!");
       }
@@ -77,6 +76,7 @@ export default function CadAlunos() {
               onChange={(e) => setAluno({ ...aluno, nome: e.target.value })}
               placeholder="Nome do aluno"
               required
+              className="text-gray-600"
             />
           </div>
           <div>
@@ -91,6 +91,7 @@ export default function CadAlunos() {
               onChange={(e) => setAluno({ ...aluno, idade: parseInt(e.target.value) })}
               placeholder="Idade do aluno"
               required
+              className="text-gray-600"
             />
           </div>
           <div>
@@ -105,6 +106,7 @@ export default function CadAlunos() {
               onChange={(e) => setAluno({ ...aluno, foto: e.target.value })}
               placeholder="URL da foto do aluno"
               required
+              className="text-gray-600"
             />
           </div>
           <div>
@@ -118,6 +120,7 @@ export default function CadAlunos() {
               onChange={(e) => setAluno({ ...aluno, descricao: e.target.value })}
               placeholder="Descrição do aluno"
               required
+              className="text-gray-600"
             />
           </div>
           <div>
@@ -131,6 +134,7 @@ export default function CadAlunos() {
               value={aluno.hardSkills.join(", ")}
               onChange={(e) => setAluno({ ...aluno, hardSkills: e.target.value.split(", ") })}
               placeholder="Hard skills, separadas por vírgula"
+              className="text-gray-600"
             />
           </div>
           <div>
@@ -144,10 +148,13 @@ export default function CadAlunos() {
               value={aluno.softSkills.join(", ")}
               onChange={(e) => setAluno({ ...aluno, softSkills: e.target.value.split(", ") })}
               placeholder="Soft skills, separadas por vírgula"
+              className="text-gray-600"
             />
           </div>
           <div>
-            <button type="submit">Cadastrar</button>
+            <button type="submit" className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-4">
+              Cadastrar
+            </button>
           </div>
         </form>
       </div>

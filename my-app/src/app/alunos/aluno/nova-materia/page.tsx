@@ -72,10 +72,10 @@ export default function NovaMateria({ params }: { params: { id: string } }) {
             Id da Matéria:
           </label>
           <input
-            type="string"
+            type="number"
             id="idMateria"
             value={materia.id}
-            onChange={(e) => setMateria({ ...materia, id: e.target.value })}
+            onChange={(e) => setMateria({ ...materia, id: Number(e.target.value) })}
             placeholder="Id da matéria"
             required
             className="text-gray-600"
@@ -83,7 +83,9 @@ export default function NovaMateria({ params }: { params: { id: string } }) {
         </div>
         
         <div>
-          <button type="submit">Cadastrar Matéria</button>
+          <button type="submit" className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-4">
+            Cadastrar Matéria
+          </button>
         </div>
       </form>
     </div>
