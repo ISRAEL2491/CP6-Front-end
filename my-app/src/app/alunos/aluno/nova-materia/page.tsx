@@ -8,8 +8,7 @@ export default function NovaMateria({ params }: { params: { id: string } }) {
   const router = useRouter();
   const alunoId = Number(params.id);
 
-  const [materia, setMateria] = useState<Materia>({
-    id: 0,
+  const [materia, setMateria] = useState<Omit<Materia, 'id'>>({
     nome: "",
     checkpoints: [],
     challenges: [],
@@ -67,21 +66,6 @@ export default function NovaMateria({ params }: { params: { id: string } }) {
             className="text-gray-600"
           />
         </div>
-        <div>
-          <label htmlFor="idMateria" className="block mb-2 text-sm font-medium">
-            Id da Matéria:
-          </label>
-          <input
-            type="number"
-            id="idMateria"
-            value={materia.id}
-            onChange={(e) => setMateria({ ...materia, id: Number(e.target.value) })}
-            placeholder="Id da matéria"
-            required
-            className="text-gray-600"
-          />
-        </div>
-        
         <div>
           <button type="submit" className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-4">
             Cadastrar Matéria
