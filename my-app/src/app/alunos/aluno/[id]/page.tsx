@@ -33,7 +33,6 @@ export default function Aluno({ params }: { params: Promise<{ id: string }> }) {
   const chartRef = useRef<HTMLCanvasElement | null>(null);
   const chartInstance = useRef<Chart<'pie'> | null>(null);
 
-  // Use React.use() para "desembrulhar" a Promise do params
   const { id } = use(params);
 
   useEffect(() => {
