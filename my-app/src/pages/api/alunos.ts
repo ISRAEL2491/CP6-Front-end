@@ -144,8 +144,20 @@ const alunos = [
     idade: 21,
     foto: "/assets/israel.png",
     descricao: "Estudante com habilidades sólidas em lógica e design.",
-    hardSkills: ["Python", "Node.js", "MongoDB"],
-    softSkills: ["Trabalho em equipe", "Resiliência", "Comunicação"],
+    hardSkills: ["JavaScript", "React", "Java", "Python", "HTML", "CSS", "MySQL", "Git/GitHub"],
+    softSkills: [
+      "Trabalho em Equipe",
+      "Adaptabilidade",
+      "Criatividade",
+      "Resolução de Problemas",
+      "Comunicação",
+      "Inteligência Emocional",
+      "Resiliência",
+      "Gestão de Tempo",
+      "Organização",
+      "Pensamento Crítico",
+      "Aprendizado Contínuo"
+      ],
     materias: [
       {
         id: 1,
@@ -266,11 +278,23 @@ const alunos = [
   {
     id: 558577,
     nome: "Marcus Calazans",
-    idade: 21,
+    idade: 25,
     foto: "/assets/marcus.png",
     descricao: "Estudante com habilidades sólidas em lógica e design.",
-    hardSkills: ["Python", "Node.js", "MongoDB"],
-    softSkills: ["Trabalho em equipe", "Resiliência", "Comunicação"],
+    hardSkills: ["JavaScript", "React", "Java", "Python", "HTML", "CSS", "MySQL", "Git/GitHub"],
+    softSkills: [
+      "Trabalho em Equipe",
+      "Adaptabilidade",
+      "Criatividade",
+      "Resolução de Problemas",
+      "Comunicação",
+      "Inteligência Emocional",
+      "Resiliência",
+      "Gestão de Tempo",
+      "Organização",
+      "Pensamento Crítico",
+      "Aprendizado Contínuo"
+      ],
     materias: [
       {
         id: 1,
@@ -394,8 +418,20 @@ const alunos = [
     idade: 18,
     foto: "/assets/cadu.png",
     descricao: "Estudante com habilidades sólidas em lógica e design.",
-    hardSkills: ["Python", "Node.js", "SQL"],
-    softSkills: ["Trabalho em equipe", "Resiliência", "Comunicação"],
+    hardSkills: ["JavaScript", "React", "Java", "Python", "HTML", "CSS", "MySQL", "Git/GitHub"],
+    softSkills: [
+      "Trabalho em Equipe",
+      "Adaptabilidade",
+      "Criatividade",
+      "Resolução de Problemas",
+      "Comunicação",
+      "Inteligência Emocional",
+      "Resiliência",
+      "Gestão de Tempo",
+      "Organização",
+      "Pensamento Crítico",
+      "Aprendizado Contínuo"
+      ],
     materias: [
       {
         id: 1,
@@ -515,6 +551,7 @@ const alunos = [
   }
 ];
 
+  let nextId = alunos.length > 0 ? Math.max(...alunos.map((aluno) => aluno.id)) + 1 : 1;
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { id } = req.query;
@@ -535,7 +572,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     if (!novoAluno.nome || !novoAluno.idade) {
       return res.status(400).json({ message: "Campos obrigatórios não preenchidos." });
     }
-    novoAluno.id = Date.now();
+    novoAluno.id = nextId++;
     alunos.push(novoAluno);
     res.status(201).json(novoAluno);
   } else if (req.method === 'PUT') {
@@ -559,5 +596,4 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-  
 }

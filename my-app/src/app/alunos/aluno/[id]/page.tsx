@@ -57,7 +57,7 @@ export default function Aluno({ params }: { params: { id: string } }) {
   useEffect(() => {
     if (aluno.materias.length > 0 && chartRef.current) {
       if (chartInstance.current) {
-        chartInstance.current.destroy(); // Destrói o gráfico anterior
+        chartInstance.current.destroy(); 
       }
       const ctx = chartRef.current.getContext('2d');
       if (ctx) {
