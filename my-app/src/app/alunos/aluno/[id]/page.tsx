@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState, useRef } from "react";
 import Chart from 'chart.js/auto';
+import { use } from 'react';
 
-export default function Aluno({ params }: { params: { id: string } }) {
+export default function Aluno({ params }: { params: Promise<{ id: string }> }) {
   const [aluno, setAluno] = useState<TipoAluno>({
     id: 0,
     nome: "",
@@ -32,12 +33,15 @@ export default function Aluno({ params }: { params: { id: string } }) {
   const chartRef = useRef<HTMLCanvasElement | null>(null);
   const chartInstance = useRef<Chart<'pie'> | null>(null);
 
+  // Use React.use() para "desembrulhar" a Promise do params
+  const { id } = use(params);
+
   useEffect(() => {
     const fetchAluno = async () => {
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/alunos`);
         const data = await response.json();
-        const alunoEncontrado = data.find((aluno: TipoAluno) => aluno.id === Number(params.id));
+        const alunoEncontrado = data.find((aluno: TipoAluno) => aluno.id === Number(id));
 
         if (alunoEncontrado) {
           setAluno(alunoEncontrado);
@@ -52,7 +56,7 @@ export default function Aluno({ params }: { params: { id: string } }) {
     };
 
     fetchAluno();
-  }, [params.id]);
+  }, [id]);
 
   useEffect(() => {
     if (aluno.materias.length > 0 && chartRef.current) {
@@ -127,7 +131,7 @@ export default function Aluno({ params }: { params: { id: string } }) {
       ...aluno,
     };
 
-    const response = await fetch(`/api/alunos/${params.id}`, {
+    const response = await fetch(`/api/alunos/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -137,7 +141,7 @@ export default function Aluno({ params }: { params: { id: string } }) {
 
     if (response.ok) {
       setEditMode(false);
-      router.push(`/alunos/${params.id}`);
+      router.push(`/alunos/${id}`);
     } else {
       console.error("Erro ao atualizar aluno");
     }
