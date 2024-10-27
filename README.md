@@ -35,7 +35,7 @@ Este portfólio tem como objetivo consolidar todas as avaliações, checkpoint, 
 ## Como Executar o Projeto
 1. Clone o repositório:
    ```bash
-   git clone <link-do-repositório>
+   git clone (https://github.com/ISRAEL2491/CP6-Front-end)
    ```
 2. Instale as dependências:
    ```bash
@@ -45,4 +45,3 @@ Este portfólio tem como objetivo consolidar todas as avaliações, checkpoint, 
    ```bash
    npm run dev
    ```
-4. Abra [http://localhost:3000](http://localhost:3000) no seu navegador para visualizar o projeto.
