@@ -33,9 +33,6 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# vercel
-#.vercel
-
 # typescript
 *.tsbuildinfo
 next-env.d.ts
@@ -55,3 +52,4 @@ npm-debug.log*
 # OS generated files
 Thumbs.db
 .DS_Store
+.vercel
