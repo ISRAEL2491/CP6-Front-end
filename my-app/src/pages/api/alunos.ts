@@ -139,7 +139,7 @@ const alunos = [
     ]
   },
   {
-    id: 558576,
+    id: 557964,
     nome: "Israel Vieira",
     idade: 21,
     foto: "/assets/israel.png",
@@ -276,7 +276,7 @@ const alunos = [
     ]
   },
   {
-    id: 558577,
+    id: 556620,
     nome: "Marcus Calazans",
     idade: 25,
     foto: "/assets/marcus.png",
