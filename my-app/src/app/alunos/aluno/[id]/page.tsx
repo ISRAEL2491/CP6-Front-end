@@ -3,7 +3,8 @@ import { Challenge, Checkpoint, GlobalSolution, Materia, TipoAluno } from '@/typ
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import Chart from 'chart.js/auto';
 
 export default function Aluno({ params }: { params: { id: string } }) {
   const [aluno, setAluno] = useState<TipoAluno>({
@@ -28,6 +29,8 @@ export default function Aluno({ params }: { params: { id: string } }) {
   const [editMode, setEditMode] = useState(false);
   const [addMateriaMode, setAddMateriaMode] = useState(false);
   const router = useRouter();
+  const chartRef = useRef<HTMLCanvasElement | null>(null);
+  const chartInstance = useRef<Chart<'pie'> | null>(null);
 
   useEffect(() => {
     const fetchAluno = async () => {
@@ -51,6 +54,56 @@ export default function Aluno({ params }: { params: { id: string } }) {
     fetchAluno();
   }, [params.id]);
 
+  useEffect(() => {
+    if (aluno.materias.length > 0 && chartRef.current) {
+      if (chartInstance.current) {
+        chartInstance.current.destroy(); // Destrói o gráfico anterior
+      }
+      const ctx = chartRef.current.getContext('2d');
+      if (ctx) {
+        chartInstance.current = new Chart<'pie'>(ctx, {
+          type: 'pie',
+          data: {
+            labels: aluno.materias.map((materia) => materia.nome),
+            datasets: [{
+              label: 'Progresso dos Checkpoints',
+              data: aluno.materias.map((materia) =>
+                materia.checkpoints.length > 0
+                  ? materia.checkpoints.reduce((acc, checkpoint) => acc + checkpoint.nota, 0) / materia.checkpoints.length
+                  : 0
+              ),
+              backgroundColor: [
+                'rgba(246, 53, 98, 0.5)',
+                'rgba(54, 162, 235, 0.5)',
+                'rgba(255, 206, 86, 0.5)',
+                'rgba(75, 192, 192, 0.5)',
+                'rgba(153, 102, 255, 0.5)',
+                'rgba(255, 159, 64, 0.5)',
+              ],
+              borderColor: [
+                '#f63562',
+                '#36a2eb',
+                '#ffce56',
+                '#4bc0c0',
+                '#9966ff',
+                '#ff9f40',
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'bottom',
+              },
+            }
+          }
+        });
+      }
+    }
+  }, [aluno]);
+
   if (carregando) {
     return <p>Carregando...</p>;
   }
@@ -71,7 +124,7 @@ export default function Aluno({ params }: { params: { id: string } }) {
     e.preventDefault();
 
     const novoAluno = {
-      ...aluno, // Manter as informações existentes do aluno
+      ...aluno,
     };
 
     const response = await fetch(`/api/alunos/${params.id}`, {
@@ -145,22 +198,27 @@ export default function Aluno({ params }: { params: { id: string } }) {
               <p className="flex justify-end font-bold text-[#f63562]">RM: {aluno.id}</p>
             </div>
           </div>
-          <div className='skills'>
-            <div className='skill'>
-              <h2>Hard Skills</h2>
-              <ul>
-                {aluno.hardSkills.map((skill: string) => (
-                  <li key={skill}>• {skill}</li>
-                ))}
-              </ul>
+          <div className='skills-container'>
+            <div className='skills'>
+              <div className='skill'>
+                <h2>Hard Skills</h2>
+                <ul>
+                  {aluno.hardSkills.map((skill: string) => (
+                    <li key={skill}>• {skill}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className='skill'>
+                <h2>Soft Skills</h2>
+                <ul>
+                  {aluno.softSkills.map((skill: string) => (
+                    <li key={skill}>• {skill}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div className='skill'>
-              <h2>Soft Skills</h2>
-              <ul>
-                {aluno.softSkills.map((skill: string) => (
-                  <li key={skill}>• {skill}</li>
-                ))}
-              </ul>
+            <div className="grafico-container">
+              <canvas ref={chartRef} id="grafico" width="300" height="300"></canvas>
             </div>
           </div>
           <div className='avaliacoes'>
@@ -242,65 +300,65 @@ export default function Aluno({ params }: { params: { id: string } }) {
                   <td><label htmlFor="descricaoAluno">Descrição:</label></td>
                   <td>
                     <textarea
-                    id="descricaoAluno"
-                    value={aluno.descricao}
-                    onChange={(e) => setAluno({ ...aluno, descricao: e.target.value })}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td><label htmlFor="hardSkillsAluno">Hard Skills:</label></td>
-                <td>
-                  <input
-                    type="text"
-                    id="hardSkillsAluno"
-                    value={aluno.hardSkills.join(", ")}
-                    onChange={(e) => setAluno({ ...aluno, hardSkills: e.target.value.split(", ") })}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td><label htmlFor="softSkillsAluno">Soft Skills:</label></td>
-                <td>
-                  <input
-                    type="text"
-                    id="softSkillsAluno"
-                    value={aluno.softSkills.join(", ")}
-                    onChange={(e) => setAluno({ ...aluno, softSkills: e.target.value.split(", ") })}
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <button type="submit">Salvar Alterações</button>
-        </form>
-      </section>
-    )}
+                      id="descricaoAluno"
+                      value={aluno.descricao}
+                      onChange={(e) => setAluno({ ...aluno, descricao: e.target.value })}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td><label htmlFor="hardSkillsAluno">Hard Skills:</label></td>
+                  <td>
+                    <input
+                      type="text"
+                      id="hardSkillsAluno"
+                      value={aluno.hardSkills.join(", ")}
+                      onChange={(e) => setAluno({ ...aluno, hardSkills: e.target.value.split(", ") })}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td><label htmlFor="softSkillsAluno">Soft Skills:</label></td>
+                  <td>
+                    <input
+                      type="text"
+                      id="softSkillsAluno"
+                      value={aluno.softSkills.join(", ")}
+                      onChange={(e) => setAluno({ ...aluno, softSkills: e.target.value.split(", ") })}
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="submit">Salvar Alterações</button>
+          </form>
+        </section>
+      )}
 
-    {addMateriaMode && (
-      <section className='adicionar-materia'>
-        <h1>Adicionar Nova Matéria</h1>
-        <form onSubmit={handleAddMateria}>
-          <table>
-            <tbody>
-              <tr>
-                <td><label htmlFor="nomeMateria">Nome da Matéria:</label></td>
-                <td>
-                  <input
-                    type="text"
-                    id="nomeMateria"
-                    value={novaMateria.nome}
-                    onChange={(e) => setNovaMateria({ ...novaMateria, nome: e.target.value })}
-                    required
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <button type="submit">Adicionar Matéria</button>
-        </form>
-      </section>
-    )}
-  </div>
+      {addMateriaMode && (
+        <section className='adicionar-materia'>
+          <h1>Adicionar Nova Matéria</h1>
+          <form onSubmit={handleAddMateria}>
+            <table>
+              <tbody>
+                <tr>
+                  <td><label htmlFor="nomeMateria">Nome da Matéria:</label></td>
+                  <td>
+                    <input
+                      type="text"
+                      id="nomeMateria"
+                      value={novaMateria.nome}
+                      onChange={(e) => setNovaMateria({ ...novaMateria, nome: e.target.value })}
+                      required
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="submit">Adicionar Matéria</button>
+          </form>
+        </section>
+      )}
+    </div>
   );
 }

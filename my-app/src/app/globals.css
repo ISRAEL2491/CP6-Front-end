@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-/* global.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,6 +11,7 @@
 }
 
 @layer components {
+
     .cabecalho {
         @apply flex justify-between items-center p-4;
     }
@@ -27,16 +28,8 @@
         @apply text-xl leading-tight;
     }
 
-    .info {
-        @apply flex justify-evenly gap-10 pr-10 mr-2.5;
-    }
-
     .home-button {
         @apply p-10 text-white bg-none border-none text-sm font-bold cursor-pointer;
-    }
-
-    .img-home {
-        @apply ml-[20%] border-0; 
     }
 
     .home-text {
@@ -45,6 +38,10 @@
 
     .home-text h1 {
         @apply text-[11vw] pl-16;
+    }
+
+    .img-home {
+        @apply ml-[20%] border-0;
     }
 
     .home-page p {
@@ -56,10 +53,6 @@
     }
 
     .menu li:hover {
-        @apply text-[#f63562];
-    }
-
-    .new {
         @apply text-[#f63562];
     }
 
@@ -75,6 +68,10 @@
         @apply pl-[100px] border-0; 
     }
 
+    .info {
+        @apply flex justify-evenly gap-10 pr-10 mr-2.5;
+    }
+
     .info button {
         @apply p-2;
     }
@@ -84,27 +81,39 @@
     }
 
     .head-aluno {
-        @apply flex flex-row pl-16 pb-10;
+        @apply flex flex-row items-center p-10 gap-10;
     }
 
-    .descricao-aluno {
-        @apply flex flex-col gap-4 text-[0.9em] max-w-[40%] pl-6 pr-20;
+    .head-aluno h1 {
+        @apply text-[7vw] font-bold text-white uppercase leading-none tracking-tight;
     }
 
     .foto-aluno {
-        @apply h-[200px] w-[300px];
+        @apply h-[250px] w-[250px] rounded-full shadow-lg;
     }
 
-    .aluno h1 {
-        @apply text-[8vw] pl-10 uppercase leading-none tracking-tight;
+    .descricao-aluno {
+        @apply flex flex-col gap-4 text-right text-[1em] max-w-[30%] pr-10;
+    }
+
+    .descricao-aluno p {
+        @apply text-gray-300;
+    }
+
+    .descricao-aluno p:last-child {
+        @apply font-bold text-[#f63562];
+    }
+
+    .skills-container {
+        @apply flex gap-10 p-10;
     }
 
     .skills {
-        @apply flex flex-row gap-20 p-20 ml-10;
+        @apply flex flex-col md:flex-row gap-10 w-[60%];
     }
 
     .skill {
-        @apply flex flex-col gap-4 bg-gray-900 p-6 rounded-lg shadow-md w-[45%];
+        @apply flex flex-col gap-4 bg-gray-900 p-6 rounded-lg shadow-md w-full md:w-[45%];
     }
 
     .skill h2 {
@@ -118,7 +127,7 @@
     .skill li {
         @apply text-sm mb-2; 
     }
-    
+
     .avaliacoes {
         @apply flex flex-col ml-10 mt-10;
     }
@@ -147,7 +156,7 @@
         @apply flex flex-col justify-center;
     }
 
-    .botao-editar {
+    .botao-editar, .botao-nova-materia {
         @apply border border-white px-4 py-2 rounded ml-10 w-[10%] mt-4 transition-colors duration-300 ease-in-out;
     }
 
@@ -155,24 +164,29 @@
         @apply bg-[#f63562] text-white;
     }
 
-    .editar-aluno {
+    .botao-nova-materia:hover {
+        @apply bg-[#32a852] text-white;
+    }
+
+    .editar-aluno, .adicionar-materia {
         @apply bg-gray-800 p-8 rounded-lg shadow-lg mt-10 w-[80%] mx-auto;
     }
 
-    .editar-aluno h1 {
+    .editar-aluno h1, .adicionar-materia h1 {
         @apply text-3xl font-bold mb-6;
     }
 
-    .editar-aluno form table {
+    .editar-aluno form table, .adicionar-materia form table {
         @apply w-full;
     }
 
-    .editar-aluno form td {
+    .editar-aluno form td, .adicionar-materia form td {
         @apply p-4;
     }
 
     .editar-aluno input[type="text"],
-    .editar-aluno textarea {
+    .editar-aluno textarea,
+    .adicionar-materia input[type="text"] {
         @apply w-full p-2 border border-gray-300 rounded-md text-black;
     }
 
@@ -180,35 +194,21 @@
         @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4;
     }
 
-    .adicionar-materia {
-        @apply bg-gray-800 p-8 rounded-lg shadow-lg mt-10 w-[80%] mx-auto;
-    }
-
-    .adicionar-materia h1 {
-        @apply text-3xl font-bold mb-6;
-    }
-
-    .adicionar-materia form table {
-        @apply w-full;
-    }
-
-    .adicionar-materia form td {
-        @apply p-4;
-    }
-
-    .adicionar-materia input[type="text"] {
-        @apply w-full p-2 border border-gray-300 rounded-md text-black;
-    }
-
     .adicionar-materia button[type="submit"] {
         @apply bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-4;
     }
 
-    .botao-nova-materia {
-        @apply border border-white px-4 py-2 rounded ml-10 w-[20%] mt-4 transition-colors duration-300 ease-in-out;
+    .descricao-aluno {
+        @apply flex flex-col gap-4 text-right text-[1em] max-w-[30%] pr-10 relative;
     }
-
-    .botao-nova-materia:hover {
-        @apply bg-[#32a852] text-white;
+    
+    .rm-aluno {
+        @apply font-bold text-[#f63562];
+    }
+    
+    .grafico-container {
+        @apply w-[40%] flex justify-center items-center;
+        width: 300px;
+        height: 300px;
     }
 }
