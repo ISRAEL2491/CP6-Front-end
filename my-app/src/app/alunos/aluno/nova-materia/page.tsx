@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Materia } from "@/type";
 
-export default function NovaMateria({ params }: { params: { id: string } }) {
+export default function NovaMateria({ params }: { params: { id: number } }) {
   const router = useRouter();
   const alunoId = Number(params.id);
 

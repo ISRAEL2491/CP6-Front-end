@@ -1,16 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
+/* global.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+
+@layer components {
     body {
         @apply font-poppins bg-[#0e0e0e] text-white;
     }
-}
-
-@layer components {
 
     .cabecalho {
         @apply flex justify-between items-center p-4;
@@ -28,25 +25,39 @@
         @apply text-xl leading-tight;
     }
 
+    .info {
+        @apply flex justify-evenly gap-10 pr-10;
+    }
+
+
+    .info button {
+        @apply p-2;
+    }
+
+
     .home-button {
         @apply p-10 text-white bg-none border-none text-sm font-bold cursor-pointer;
     }
+
+
+    .img-home {
+        @apply ml-[20%] border-0; 
+    }
+
 
     .home-text {
         @apply flex flex-row justify-between;
     }
 
+
     .home-text h1 {
         @apply text-[11vw] pl-16;
-    }
-
-    .img-home {
-        @apply ml-[20%] border-0;
     }
 
     .home-page p {
         @apply text-[0.8em] max-w-[40%] p-12 pr-20;
     }
+
 
     .menu {
         @apply flex flex-row gap-4 p-16 justify-evenly font-bold list-none text-white;
@@ -56,52 +67,38 @@
         @apply text-[#f63562];
     }
 
+    .new {
+        @apply text-[#f63562];
+    }
     .rodape {
         @apply flex flex-row mt-8 p-[60px];
     }
-
     .rodape h2 {
         @apply mr-[4.5em] text-[4.2em] font-bold text-[#f63562];
     }
-
     .rodape-image {
-        @apply pl-[100px] border-0; 
+        @apply  pl-[100px] border-0; 
     }
-
     .info {
-        @apply flex justify-evenly gap-10 pr-10 mr-2.5;
+        @apply mr-2.5;
     }
-
     .info button {
         @apply p-2;
     }
-
     .info button:hover {
         @apply text-[#f63562];
     }
-
     .head-aluno {
-        @apply flex flex-row items-center p-10 gap-10;
+        @apply flex flex-row pl-16 pb-10;
     }
-
-    .head-aluno h1 {
-        @apply text-[7vw] font-bold text-white uppercase leading-none tracking-tight;
-    }
-
-    .foto-aluno {
-        @apply h-[250px] w-[250px] rounded-full shadow-lg;
-    }
-
     .descricao-aluno {
-        @apply flex flex-col gap-4 text-right text-[1em] max-w-[30%] pr-10;
+        @apply flex flex-col gap-4 text-[0.9em] max-w-[40%] pl-6 pr-20;
     }
-
-    .descricao-aluno p {
-        @apply text-gray-300;
+    .foto-aluno {
+        @apply h-[200px] w-[300px];
     }
-
-    .descricao-aluno p:last-child {
-        @apply font-bold text-[#f63562];
+    .aluno h1 {
+        @apply text-[8vw] pl-10 uppercase leading-none tracking-tight;
     }
 
     .skills-container {
