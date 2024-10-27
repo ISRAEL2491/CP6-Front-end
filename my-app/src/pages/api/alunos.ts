@@ -38,7 +38,7 @@ const alunos = [
           { id: 4, nota: 9.3, descricao: "Desafio 4: Integração com IA" }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/ia-chatbot-1", nota: 9.5, descricao: "Primeira solução global." }
+          { id: 1, link: "", nota: 9.5, descricao: "Primeira solução global." }
         ]
       },
       {
@@ -57,7 +57,7 @@ const alunos = [
           { id: 4, nota: 9.4, descricao: "Desafio 4: Garantir integridade dos dados." }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/building-relational-database-1", nota: 9.3, descricao: "Solução global para o banco de dados." }
+          { id: 1, link: "", nota: 9.3, descricao: "Solução global para o banco de dados." }
         ]
       },
       {
@@ -76,7 +76,7 @@ const alunos = [
           { id: 4, nota: 9.6, descricao: "Desafio 4: Projetar uma aplicação simples." }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/computational-thinking-python-1", nota: 9.4, descricao: "Solução global em Python." }
+          { id: 1, link: "", nota: 9.4, descricao: "Solução global em Python." }
         ]
       },
       {
@@ -95,7 +95,7 @@ const alunos = [
           { id: 4, nota: 9.6, descricao: "Desafio 4: Criar uma aplicação utilizando DDD." }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/domain-driven-design-java-1", nota: 9.5, descricao: "Solução global utilizando DDD." }
+          { id: 1, link: "", nota: 9.5, descricao: "Solução global utilizando DDD." }
         ]
       },
       {
@@ -114,7 +114,7 @@ const alunos = [
           { id: 4, nota: 9.6, descricao: "Desafio 4: Integrar animações de forma eficaz." }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/front-end-design-engineering-1", nota: 9.5, descricao: "Solução global para design front-end." }
+          { id: 1, link: "", nota: 9.5, descricao: "Solução global para design front-end." }
         ]
       },
       {
@@ -133,7 +133,7 @@ const alunos = [
           { id: 4, nota: 9.4, descricao: "Desafio 4: Garantir a qualidade do software." }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/software-engineering-business-model-1", nota: 9.4, descricao: "Solução global em engenharia de software." }
+          { id: 1, link: "", nota: 9.4, descricao: "Solução global em engenharia de software." }
         ]
       }
     ]
@@ -172,7 +172,7 @@ const alunos = [
             { id: 4, nota: 9.3, descricao: "Desafio 4: Integração com IA" }
           ],
           globalSolutions: [
-            { id: 1, link: "/global-solutions/ia-chatbot-1", nota: 9.4, descricao: "Solução eficiente e bem executada." }
+            { id: 1, link: "", nota: 9.4, descricao: "Solução eficiente e bem executada." }
           ]
         },
         {
@@ -191,7 +191,7 @@ const alunos = [
             { id: 4, nota: 9.4, descricao: "Desafio 4: Garantir integridade dos dados." }
           ],
           globalSolutions: [
-            { id: 1, link: "/global-solutions/building-relational-database-1", nota: 9.3, descricao: "Excelente solução para um banco de dados relacional." }
+            { id: 1, link: "", nota: 9.3, descricao: "Excelente solução para um banco de dados relacional." }
           ]
         },
         {
@@ -210,7 +210,7 @@ const alunos = [
             { id: 4, nota: 9.4, descricao: "Desafio 4: Projetar uma aplicação simples." }
           ],
           globalSolutions: [
-            { id: 1, link: "/global-solutions/computational-thinking-python-1", nota: 9.2, descricao: "Solução sólida e eficiente." }
+            { id: 1, link: "", nota: 9.2, descricao: "Solução sólida e eficiente." }
           ]
         },
         {
@@ -229,7 +229,7 @@ const alunos = [
             { id: 4, nota: 9.6, descricao: "Desafio 4: Criar uma aplicação utilizando DDD." }
           ],
           globalSolutions: [
-            { id: 1, link: "/global-solutions/domain-driven-design-java-1", nota: 9.5, descricao: "Excelente aplicação dos conceitos de DDD." }
+            { id: 1, link: "", nota: 9.5, descricao: "Excelente aplicação dos conceitos de DDD." }
           ]
         },
         {
@@ -248,7 +248,7 @@ const alunos = [
             { id: 4, nota: 9.7, descricao: "Desafio 4: Integrar animações de forma eficaz." }
           ],
           globalSolutions: [
-            { id: 1, link: "/global-solutions/front-end-design-engineering-1", nota: 9.6, descricao: "Excelente solução para design front-end." }
+            { id: 1, link: "", nota: 9.6, descricao: "Excelente solução para design front-end." }
           ]
         },
         {
@@ -267,7 +267,7 @@ const alunos = [
             { id: 4, nota: 9.5, descricao: "Desafio 4: Garantir a qualidade do software." }
           ],
           globalSolutions: [
-            { id: 1, link: "/global-solutions/software-engineering-business-model-1", nota: 9.4, descricao: "Solução bem estruturada em engenharia de software." }
+            { id: 1, link: "", nota: 9.4, descricao: "Solução bem estruturada em engenharia de software." }
           ]
         }
       ]      
@@ -306,7 +306,7 @@ const alunos = [
           { id: 4, nota: 9.0, descricao: "Desafio 4: Integração com IA" }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/ia-chatbot-1", nota: 9.3, descricao: "Solução global inovadora." }
+          { id: 1, link: "", nota: 9.3, descricao: "Solução global inovadora." }
         ]
       },
       {
@@ -325,7 +325,7 @@ const alunos = [
           { id: 4, nota: 9.2, descricao: "Desafio 4: Garantir integridade dos dados." }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/building-relational-database-1", nota: 9.0, descricao: "Boa solução para o banco de dados." }
+          { id: 1, link: "", nota: 9.0, descricao: "Boa solução para o banco de dados." }
         ]
       },
       {
@@ -344,7 +344,7 @@ const alunos = [
           { id: 4, nota: 9.4, descricao: "Desafio 4: Projetar uma aplicação simples." }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/computational-thinking-python-1", nota: 9.2, descricao: "Solução global eficiente." }
+          { id: 1, link: "", nota: 9.2, descricao: "Solução global eficiente." }
         ]
       },
       {
@@ -363,7 +363,7 @@ const alunos = [
           { id: 4, nota: 9.7, descricao: "Desafio 4: Criar uma aplicação utilizando DDD." }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/domain-driven-design-java-1", nota: 9.6, descricao: "Excelente aplicação dos conceitos de DDD." }
+          { id: 1, link: "", nota: 9.6, descricao: "Excelente aplicação dos conceitos de DDD." }
         ]
       },
       {
@@ -382,7 +382,7 @@ const alunos = [
           { id: 4, nota: 9.6, descricao: "Desafio 4: Integrar animações de forma eficaz." }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/front-end-design-engineering-1", nota: 9.5, descricao: "Solução global para design front-end." }
+          { id: 1, link: "", nota: 9.5, descricao: "Solução global para design front-end." }
         ]
       },
       {
@@ -401,7 +401,7 @@ const alunos = [
           { id: 4, nota: 9.4, descricao: "Desafio 4: Garantir a qualidade do software." }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/software-engineering-business-model-1", nota: 9.4, descricao: "Solução global em engenharia de software." }
+          { id: 1, link: "", nota: 9.4, descricao: "Solução global em engenharia de software." }
         ]
       }
     ]
@@ -440,7 +440,7 @@ const alunos = [
           { id: 4, nota: 9.5, descricao: "Desafio 4: Integração com IA" }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/ia-chatbot-1", nota: 9.3, descricao: "Solução bem estruturada e eficiente." }
+          { id: 1, link: "", nota: 9.3, descricao: "Solução bem estruturada e eficiente." }
         ]
       },
       {
@@ -459,7 +459,7 @@ const alunos = [
           { id: 4, nota: 9.5, descricao: "Desafio 4: Garantir integridade dos dados." }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/building-relational-database-1", nota: 9.4, descricao: "Solução adequada para garantir integridade e eficiência." }
+          { id: 1, link: "", nota: 9.4, descricao: "Solução adequada para garantir integridade e eficiência." }
         ]
       },
       {
@@ -478,7 +478,7 @@ const alunos = [
           { id: 4, nota: 9.5, descricao: "Desafio 4: Projetar uma aplicação simples." }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/computational-thinking-python-1", nota: 9.3, descricao: "Solução eficiente e bem aplicada." }
+          { id: 1, link: "", nota: 9.3, descricao: "Solução eficiente e bem aplicada." }
         ]
       },
       {
@@ -497,7 +497,7 @@ const alunos = [
           { id: 4, nota: 9.6, descricao: "Desafio 4: Criar uma aplicação utilizando DDD." }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/domain-driven-design-java-1", nota: 9.5, descricao: "Excelente trabalho com DDD." }
+          { id: 1, link: "", nota: 9.5, descricao: "Excelente trabalho com DDD." }
         ]
       },
       {
@@ -516,7 +516,7 @@ const alunos = [
           { id: 4, nota: 9.7, descricao: "Desafio 4: Integrar animações de forma eficaz." }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/front-end-design-engineering-1", nota: 9.6, descricao: "Excelente solução para design front-end." }
+          { id: 1, link: "", nota: 9.6, descricao: "Excelente solução para design front-end." }
         ]
       },
       {
@@ -535,7 +535,7 @@ const alunos = [
           { id: 4, nota: 9.5, descricao: "Desafio 4: Garantir a qualidade do software." }
         ],
         globalSolutions: [
-          { id: 1, link: "/global-solutions/software-engineering-business-model-1", nota: 9.4, descricao: "Solução bem elaborada e eficiente." }
+          { id: 1, link: "", nota: 9.4, descricao: "Solução bem elaborada e eficiente." }
         ]
       }
     ]
