@@ -2,7 +2,7 @@
 
 1. LINK PROJETO EM DEPLOY NO VERCEL:
    ```
-   (https://github.com/ISRAEL2491/CP6-Front-end)](https://my-es0o9xioi-marcus-calazans-projects.vercel.app)
+   (https://my-es0o9xioi-marcus-calazans-projects.vercel.app)
    ```
 
 ## Portfólio Acadêmico - Análise e Desenvolvimento de Sistemas
