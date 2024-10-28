@@ -1,9 +1,9 @@
 # CP6 Front-End Project
 
 1. LINK PROJETO EM DEPLOY NO VERCEL:
-   ```
-   (https://my-es0o9xioi-marcus-calazans-projects.vercel.app)
-   ```
+   
+   https://my-es0o9xioi-marcus-calazans-projects.vercel.app
+  
 
 ## Portfólio Acadêmico - Análise e Desenvolvimento de Sistemas
 
