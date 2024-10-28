@@ -545,13 +545,14 @@ const alunos = [
   let nextId = alunos.length > 0 ? Math.max(...alunos.map(aluno => aluno.id)) + 1 : 1;
 
   export default function handler(req: NextApiRequest, res: NextApiResponse) {
+    // Definir os cabeçalhos CORS
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   
-    // Se for uma requisição OPTIONS, retorna 200
+    // Tratamento para requisições preflight (OPTIONS)
     if (req.method === 'OPTIONS') {
-      return res.status(200).end();
+      return res.status(200).end(); // Apenas finaliza a requisição OPTIONS com sucesso
     }
   
     const { method } = req;
@@ -575,7 +576,7 @@ const alunos = [
   
       default:
         // Retorna erro para métodos não suportados
-        res.setHeader('Allow', ['GET', 'POST']);
+        res.setHeader('Allow', ['GET', 'POST', 'OPTIONS']);
         res.status(405).end(`Método ${method} não permitido`);
     }
   }
