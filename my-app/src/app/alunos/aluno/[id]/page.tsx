@@ -7,7 +7,7 @@ import { useEffect, useState, useRef } from "react";
 import Chart from 'chart.js/auto';
 import { use } from 'react';
 
-export default function Aluno({ params }: { params: Promise<{ id: string }> }) {
+export default function Aluno({ params }: { params: Promise<{ id: number }> }) {
   const [aluno, setAluno] = useState<TipoAluno>({
     id: 0,
     nome: "",

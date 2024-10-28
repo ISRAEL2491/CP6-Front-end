@@ -542,49 +542,40 @@ const alunos = [
   }
 ];
 
-  let nextId = alunos.length > 0 ? Math.max(...alunos.map((aluno) => aluno.id)) + 1 : 1;
+  let nextId = alunos.length > 0 ? Math.max(...alunos.map(aluno => aluno.id)) + 1 : 1;
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { id } = req.query;
-
-  if (req.method === 'GET') {
-    if (id) {
-      const aluno = alunos.find((aluno) => aluno.id === Number(id));
-      if (aluno) {
-        res.status(200).json(aluno);
-      } else {
-        res.status(404).json({ message: "Aluno não encontrado" });
-      }
-    } else {
-      res.status(200).json(alunos);
+  export default function handler(req: NextApiRequest, res: NextApiResponse) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  
+    // Se for uma requisição OPTIONS, retorna 200
+    if (req.method === 'OPTIONS') {
+      return res.status(200).end();
     }
-  } else if (req.method === 'POST') {
-    const novoAluno = req.body;
-    if (!novoAluno.nome || !novoAluno.idade) {
-      return res.status(400).json({ message: "Campos obrigatórios não preenchidos." });
+  
+    const { method } = req;
+  
+    switch (method) {
+      case 'GET':
+        // Retorna a lista de alunos
+        res.status(200).json(alunos);
+        break;
+  
+      case 'POST':
+        // Adiciona um novo aluno
+        const novoAluno = req.body;
+        if (!novoAluno.nome || !novoAluno.idade) {
+          return res.status(400).json({ message: "Campos obrigatórios não preenchidos." });
+        }
+        novoAluno.id = nextId++;
+        alunos.push(novoAluno);
+        res.status(201).json(novoAluno);
+        break;
+  
+      default:
+        // Retorna erro para métodos não suportados
+        res.setHeader('Allow', ['GET', 'POST']);
+        res.status(405).end(`Método ${method} não permitido`);
     }
-    novoAluno.id = nextId++;
-    alunos.push(novoAluno);
-    res.status(201).json(novoAluno);
-  } else if (req.method === 'PUT') {
-    const index = alunos.findIndex((aluno) => aluno.id === Number(id));
-    if (index !== -1) {
-      const alunoAtualizado = { ...alunos[index], ...req.body };
-      alunos[index] = alunoAtualizado;
-      res.status(200).json(alunoAtualizado);
-    } else {
-      res.status(404).json({ message: "Aluno não encontrado" });
-    }
-  } else if (req.method === 'DELETE') {
-    const index = alunos.findIndex((aluno) => aluno.id === Number(id));
-    if (index !== -1) {
-      alunos.splice(index, 1); 
-      res.status(200).json({ message: "Aluno removido com sucesso." });
-    } else {
-      res.status(404).json({ message: "Aluno não encontrado" });
-    }
-  } else {
-    res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-}
