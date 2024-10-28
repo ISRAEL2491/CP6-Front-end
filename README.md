@@ -1,5 +1,10 @@
 # CP6 Front-End Project
 
+1. LINK PROJETO EM DEPLOY NO VERCEL:
+   
+https://vercel.com/api/toolbar/link/my-app-seven-sepia-80.vercel.app?via=deployment-domains-list&p=1&page=/
+  
+
 ## Portfólio Acadêmico - Análise e Desenvolvimento de Sistemas
 
 Este repositório contém o código-fonte do projeto de portfólio acadêmico desenvolvido pelos alunos do curso de Análise e Desenvolvimento de Sistemas. O objetivo do projeto é compilar e exibir os resultados das avaliações acadêmicas dos alunos ao longo do curso, proporcionando uma visão clara do desempenho e do progresso em diversas atividades.
